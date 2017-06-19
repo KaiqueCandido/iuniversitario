@@ -1,0 +1,55 @@
+<div>
+	<div class="row">
+		<a data-target="modal" class="s1 btn-floating btn-small waves-effect waves-light green"><i class="material-icons">add</i></a>
+		<a class="btn-floating btn-small waves-effect waves-light blue"><i class="material-icons">edit</i></a>
+		<a class="btn-floating btn-small waves-effect waves-light red"><i class="material-icons">delete_forever</i></a>
+		<input class="col s10 right form-control" type="text" ng-model="criterioDeBusca" placeholder="O que você está buscando?">
+	</div>
+	<table class="striped responsive-table">
+		<thead>
+        	<tr>        		
+				    <th>Código</th>
+            <th>Descrição</th>
+            <th>Período</th>
+            <th>Status</th>
+            <th>Horário da Prova</th>
+            <th>Data de Realização</th>                
+          </tr>
+        </thead>
+        <tbody>
+          	<tr ng-repeat="vest in vests">          	  	
+              	<td>{{vest}}</td>
+            </tr>            
+        </tbody>
+    </table>	
+
+    <div id="modal" class="modal modal-fixed-footer">
+    	<div class="modal-content">
+    		<nav class="center">
+    			<a href="#" class="brand-logo center">Cadastro de VestProcessoSeletivo</a>
+    		</nav>
+    		<div class="row">
+    			<form class="col s12">
+      				<div class="row">        				
+        				<div class="input-field col s12">
+          					<input id="last_name" type="text" class="validate" ng-model="novoCurso.nome">
+          					<label for="last_name">Nome do Curso</label>
+        				</div>
+        				<div class="input-field col s6">
+          					<input id="last_name" type="text" class="validate" ng-model="novoCurso.sigla">
+          					<label for="last_name">Sigla do Curso</label>
+        				</div>
+        				<div class="input-field col s6">
+          					<input id="last_name" type="text" class="validate" ng-model="novoCurso.valorMensalidade">
+          					<label for="last_name">Valor da Mensalidade</label>
+        				</div>
+      				</div>
+    			</form>
+  			</div>       
+	    </div>
+    	<div class="modal-footer">
+      		<a href="" class="modal-action modal-close waves-effect waves-green btn-flat ">Salvar</a>
+    	</div>
+  	</div>
+
+</div>

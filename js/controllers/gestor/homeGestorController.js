@@ -5,4 +5,8 @@ app.controller('homeGestorController', function($scope, $state){
 		$state.go('homeGestor.gerenciarCursos');					
 	};
 
+	$scope.gerenciarVestProcessoSeletivo = function(){
+		$state.go("homeGestor.gerenciarVestProcessoSeletivo");
+	};
+
 })

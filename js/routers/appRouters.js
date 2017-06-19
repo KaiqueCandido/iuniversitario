@@ -27,6 +27,16 @@ app.config(function($stateProvider, $urlRouterProvider) {
 					controller:"gerenciarCursosController"
 				}
 			}								
-		})        
+		})
         
+        .state("homeGestor.gerenciarVestProcessoSeletivo", {
+            cache: false,
+            url : "/gestorVestProcessoSeletivo",
+            views : {
+                "menuGestorContent" : {
+                    templateUrl : "pages/gestor/gerenciarVestProcessoSeletivo.html",
+                    controller : "gerenciarVestProcessoSeletivoCtrl"
+                }
+            }
+        });                
 });
