@@ -1,0 +1,20 @@
+{
+  "name": "iuniversitariocliente",
+  "authors": [
+    "Anderson Souza <jair_anderson_bs@hotmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "material-icons": "^0.1.0"
+  }
+}
