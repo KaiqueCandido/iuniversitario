@@ -2,7 +2,7 @@ var app = angular.module("app.vest", []);
 
 app.controller("gerenciarVestProcessoSeletivoCtrl", function ($scope, VestProcessoSeletivoAPI) {
 	
-	var listaDeVestProcessoSeletivo = function () {
+	var listaDeVestProcessoSeletivos = function () {
         VestProcessoSeletivoAPI.listaDeVests().then(function (response) {
             $scope.vests = response.data;
             console.log("deu certo");
@@ -10,7 +10,5 @@ app.controller("gerenciarVestProcessoSeletivoCtrl", function ($scope, VestProces
             console.log("ñ deu certo");
         };
     };
-
-    listaDeVestProcessoSeletivo();
-
+    listaDeVestProcessoSeletivos();
 });
