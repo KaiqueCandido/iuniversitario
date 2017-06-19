@@ -1,4 +1,4 @@
-var app = angular.module("app");
+var app = angular.module("app.vest");
 
 app.service("VestProcessoSeletivoAPI", function($http, apiConfigValue){
 	let _listaDeVests = function() {

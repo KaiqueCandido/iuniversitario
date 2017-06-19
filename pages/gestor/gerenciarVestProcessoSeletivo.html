@@ -18,7 +18,12 @@
         </thead>
         <tbody>
           	<tr ng-repeat="vest in vests">          	  	
-              	<td>{{vest}}</td>
+              	<td>{{vest.codigo}}</td>
+                <td>{{vest.descricao}}</td>
+                <td>{{vest.periodo}}</td>
+                <td>{{vest.status}}</td>
+                <td>{{vest.horarioDaProva}}</td>
+                <td>{{vest.dataDeRealizacao}}</td>
             </tr>            
         </tbody>
     </table>	

@@ -1,4 +1,4 @@
-var app = angular.module("app");
+var app = angular.module("app.vest", []);
 
 app.controller("gerenciarVestProcessoSeletivoCtrl", function ($scope, VestProcessoSeletivoAPI) {
 	
