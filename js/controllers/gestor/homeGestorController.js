@@ -9,4 +9,6 @@ app.controller('homeGestorController', function($scope, $state){
 		$state.go("homeGestor.gerenciarVestProcessoSeletivo");
 	};
 
+	initialiJquery();
+
 })
