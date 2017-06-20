@@ -1,3 +1,7 @@
 nav {
-	background-color: #4db6ac;
+	background-color: #4db6ac !important;
+}
+
+footer{
+	background-color: #4db6ac !important;
 }

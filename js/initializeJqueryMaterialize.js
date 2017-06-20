@@ -1,5 +1,4 @@
-function initialiJquery() {
-	console.log("chamou initialiJquery");
+function initialiJquery() {	
 	$(".button-collapse").sideNav();
 	$('.collapsible').collapsible();	    
     $('.modal').modal();	

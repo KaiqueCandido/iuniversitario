@@ -2,30 +2,54 @@ var app = angular.module('app');
 
 app.config(function($stateProvider, $urlRouterProvider) {
     
-    $urlRouterProvider.otherwise('/login');
+    $urlRouterProvider.otherwise('/login');      
     
     $stateProvider
                 
         .state('login', {
+            cache: false,
             url: '/login',
-            templateUrl: 'pages/login.html',
-            controller: 'loginController'
-        })
+            views : {
+                'content':{
+                    templateUrl: 'pages/login.html',
+                    controller: 'loginController'
+                }
+            }            
+        })        
 
-		.state('homeGestor', {
+        .state('homeGestor', {
+            cache: false,
             url: '/homeGestor',
-            templateUrl: 'pages/gestor/home.html',
-            controller: 'homeGestorController'
-        })
+            views: {
+                'header':{
+                    templateUrl: 'pages/header.html',
+                    controller: 'headerGestorController'
+                },
+                'content':{
+                    templateUrl: 'pages/gestor/home.html',
+                    controller: 'contentGestorController'
+                },
+                'footer':{
+                    templateUrl: 'pages/footer.html'
+                }
+            }    
+        })		
 
-        .state("homeGestor.gerenciarCursos", {
+        .state("gestorGerenciarCursos", {
         	cache: false,
 			url:"/gestorGerenciarCursos",
-			views:{
-				'menuGestorContent':{
-					templateUrl:"pages/gestor/gerenciarCursos.html",
-					controller:"gerenciarCursosController"
-				}
+			views:{                
+                'header':{
+                    templateUrl: 'pages/header.html',
+                    controller: 'headerGestorController'
+                },
+                'content':{
+                    templateUrl:"pages/gestor/gerenciarCursos.html",
+                    controller:"gerenciarCursosController"
+                },   
+                'footer':{
+                    templateUrl: 'pages/footer.html'
+                }             
 			}								
 		})
         

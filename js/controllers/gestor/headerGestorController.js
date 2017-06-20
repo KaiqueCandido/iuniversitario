@@ -1,12 +1,13 @@
 var app = angular.module('app')
-app.controller('homeGestorController', function($scope, $state){	
+app.controller('headerGestorController', function($scope, $state){	
 
 	$scope.homeGestor = function () {  	
     	$state.go('homeGestor');
   	}; 
 
-	$scope.gerenciarCursos = function () {		
-		$state.go('homeGestor.gerenciarCursos');					
+	$scope.gerenciarCursos = function () {	
+		console.log("chamou")	;
+		$state.go('gestorGerenciarCursos');					
 	};
 
 	$scope.gerenciarVestProcessoSeletivo = function(){

@@ -4,6 +4,10 @@ app.controller('gerenciarCursosController', function($scope, $rootScope, $state,
 	$scope.cursos = [
 		{sigla:"ADS",nome:"ANÁLISE E DESENVOLVIMENTO DE SISTEMAS",valorMensalidade:450.99,statusDoCadastro:"ATIVO"},
 		{sigla:"AI",nome:"AUTOMAÇÃO INDUSTRIAL",valorMensalidade:450.99,statusDoCadastro:"ATIVO"},
+		{sigla:"MAT",nome:"LICENCIATURA EM MATEMÁTICA",valorMensalidade:450.99,statusDoCadastro:"ATIVO"},{sigla:"AI",nome:"AUTOMAÇÃO INDUSTRIAL",valorMensalidade:450.99,statusDoCadastro:"ATIVO"},
+		{sigla:"MAT",nome:"LICENCIATURA EM MATEMÁTICA",valorMensalidade:450.99,statusDoCadastro:"ATIVO"},{sigla:"AI",nome:"AUTOMAÇÃO INDUSTRIAL",valorMensalidade:450.99,statusDoCadastro:"ATIVO"},
+		{sigla:"MAT",nome:"LICENCIATURA EM MATEMÁTICA",valorMensalidade:450.99,statusDoCadastro:"ATIVO"},{sigla:"AI",nome:"AUTOMAÇÃO INDUSTRIAL",valorMensalidade:450.99,statusDoCadastro:"ATIVO"},
+		{sigla:"MAT",nome:"LICENCIATURA EM MATEMÁTICA",valorMensalidade:450.99,statusDoCadastro:"ATIVO"},{sigla:"AI",nome:"AUTOMAÇÃO INDUSTRIAL",valorMensalidade:450.99,statusDoCadastro:"ATIVO"},
 		{sigla:"MAT",nome:"LICENCIATURA EM MATEMÁTICA",valorMensalidade:450.99,statusDoCadastro:"ATIVO"},
 		{sigla:"EC",nome:"ENGENHARIA CIVIL",valorMensalidade:450.99,statusDoCadastro:"ATIVO"}
 
