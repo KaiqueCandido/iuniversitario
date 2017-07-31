@@ -1,0 +1,11 @@
+<main>    	
+	<ul class="collection with-header">		
+		<li class="collection-header"><h5>Nome do arquivo</h5></li>
+		<li ng-repeat="arquivo in arquivos | filter:{nome:criterioDeBusca}" class="collection-item">
+			<div>
+				{{arquivo.nome}}
+				<a href="" class="secondary-content tooltipped" data-position="bottom" data-delay="50" data-tooltip="Download"><i class="material-icons">file_download</i></a>
+			</div>
+		</li>		
+	</ul>           
+</main>

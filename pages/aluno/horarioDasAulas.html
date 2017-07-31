@@ -1,0 +1,32 @@
+<main>    
+	<div class="card">	
+		<div class="card-content">				
+			<span class="card-title center">Horário de aulas</span>	
+			<p class="center">1º Ano Turma: A</p>
+			<table class="striped responsive-table centered bordered">
+				<thead>
+					<tr>
+						<th></th>
+						<th>Segunda</th>
+						<th>Terça</th>
+						<th>Quarta</th>
+						<th>Quinta</th>				
+						<th>Sexta</th>
+						<th>Sabado</th>						
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="horario in horarios">												
+						<td>{{horario.horarioInicio}}<br/>{{horario.horarioTermino}}</td>									
+						<td>{{horario.segunda}}</td>						
+						<td>{{horario.terca}}</td>						
+						<td>{{horario.quarta}}</td>						
+						<td>{{horario.quinta}}</td>						
+						<td>{{horario.sexta}}</td>						
+						<td>{{horario.sabado}}</td>						
+					</tr>			
+				</tbody>
+			</table>
+		</div>
+	</div>
+</main>

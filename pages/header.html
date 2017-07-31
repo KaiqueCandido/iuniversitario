@@ -1,7 +1,7 @@
 <nav class="teal lighten-2">
 	<ul id="slide-out" class="side-nav fixed">
     	<li>
-    		<div class="userView teal lighten-2">      			
+    		<div class="userView teal lighten-2" align="center">      			
       			<a href=""><img class="circle" src="img/avatar.png"></img></a>
       			<a href=""><span class="white-text name">Usuario gestor</span></a>
       			<a href=""><span class="white-text email">gestor@email.com</span></a>
@@ -57,8 +57,8 @@
             <a class="collapsible-header">Comunicação<i class="material-icons right">keyboard_arrow_down</i></a>
             <div class="collapsible-body">
               <ul>
-                <li><a ><i class="material-icons">email</i>Envio de emails</a></li>
-                <li><a ><i class="material-icons">sms</i>Envio de sms</a></li>
+                <li><a ng-click="envioDeEmail()"><i class="material-icons">email</i>Envio de emails</a></li>
+                <li><a ng-click="envioDeSms()"><i class="material-icons">sms</i>Envio de sms</a></li>
               </ul>
             </div>
           </li>

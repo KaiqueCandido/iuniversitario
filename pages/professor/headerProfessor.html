@@ -1,0 +1,53 @@
+<nav class="teal lighten-2">
+	<ul id="slide-out" class="side-nav fixed">
+   <li>
+    <div class="userView teal lighten-2" align="center">      			
+     <a href=""><img class="circle" src="img/avatar.png"></img></a>
+     <a href=""><span class="white-text name">Usuario Professor</span></a>
+     <a href=""><span class="white-text email">Professor@email.com</span></a>
+   </div>
+ </li>            	
+ <li class="no-padding">
+  <ul class="collapsible collapsible-accordion">
+    <li>
+      <a class="collapsible-header">Inicio<i class="material-icons right">keyboard_arrow_down</i></a>
+      <div class="collapsible-body">
+        <ul>
+          <li><a ng-click="homeProfessor()"><i class="material-icons">home</i>Inicio</a></li>                
+        </ul>
+      </div>
+    </li>
+    <li>
+      <a class="collapsible-header">Gerenciar<i class="material-icons right">keyboard_arrow_down</i></a>
+      <div class="collapsible-body">
+        <ul>
+          <li><a ><i class="material-icons">feedback</i>Recados</a></li>          
+          <li><a ><i class="material-icons">assignment</i>Objetivos</a></li>          
+          <li><a ><i class="material-icons">book</i>Lição de casa</a></li>          
+          <li><a ><i class="material-icons">account_balance_wallet</i>Diário de classe</a></li>          
+        </ul>
+      </div>
+    </li>     
+    <li>
+      <a class="collapsible-header">Consultas<i class="material-icons right">keyboard_arrow_down</i></a>
+      <div class="collapsible-body">
+        <ul>
+          <li><a ><i class="material-icons">recent_actors</i>Acompanhamento</a></li>          
+          <li><a ><i class="material-icons">trending_up</i>Graficos</a></li>
+        </ul>
+      </div>
+    </li>                      
+    <li>
+      <a class="collapsible-header">Ações<i class="material-icons right">keyboard_arrow_down</i></a>
+      <div class="collapsible-body">
+        <ul>
+          <li><a ><i class="material-icons">lock_outline</i>Trocar senha</a></li>
+          <li><a ng-click="logout()"><i class="material-icons">power_settings_new</i>Sair</a></li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+</li>               
+</ul>
+<a href="" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>    
+</nav>

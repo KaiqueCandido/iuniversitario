@@ -1,0 +1,83 @@
+<nav class="teal lighten-2">  
+  <ul id="slide-out" class="side-nav fixed">
+   <li>
+    <div class="userView teal lighten-2" align="center">      			
+     <a href=""><img class="circle" src="img/avatar.png"></img></a>
+     <a href=""><span class="white-text name">Usuario Aluno</span></a>
+     <a href=""><span class="white-text email">aluno@email.com</span></a>
+   </div>
+ </li>            	
+ <li class="no-padding">
+  <ul class="collapsible collapsible-accordion">
+    <li>
+      <a class="collapsible-header">Inicio<i class="material-icons right">keyboard_arrow_down</i></a>
+      <div class="collapsible-body">
+        <ul>
+          <li><a ng-click="homeAluno()"><i class="material-icons">home</i>Inicio</a></li>                
+        </ul>
+      </div>
+    </li>
+    <li>
+      <a class="collapsible-header">Utilitários<i class="material-icons right">keyboard_arrow_down</i></a>
+      <div class="collapsible-body">
+        <ul>
+          <li><a ng-click="meusArquivos()"><i class="material-icons">description</i>Meus arquivos</a></li>
+          <li><a ng-click="avaliacaoInstitucional()"><i class="material-icons">assignment</i>Avaliação institucional</a></li>
+        </ul>
+      </div>
+    </li> 
+    <li>
+      <a class="collapsible-header">Financeiro<i class="material-icons right">keyboard_arrow_down</i></a>
+      <div class="collapsible-body">
+        <ul>
+          <li><a ng-click="boletos()"><i class="material-icons">monetization_on</i>Boletos</a></li>
+        </ul>
+      </div>
+    </li>
+    <li>
+      <a class="collapsible-header">Consultas<i class="material-icons right">keyboard_arrow_down</i></a>
+      <div class="collapsible-body">
+        <ul>
+          <li><a ng-click="boletim()"><i class="material-icons">chrome_reader_mode</i>Boletim</a></li>          
+          <li><a ng-click="diarios()"><i class="material-icons">account_balance_wallet</i>Diarios</a></li>          
+          <li><a ng-click="historico()"><i class="material-icons">history</i>Historico</a></li>
+          <li><a ng-click="horarioDasAulas()"><i class="material-icons">access_time</i>Horário de aulas</a></li>
+        </ul>
+      </div>
+    </li>                      
+    <li>
+      <a class="collapsible-header">Ações<i class="material-icons right">keyboard_arrow_down</i></a>
+      <div class="collapsible-body">
+        <ul>
+          <li><a ng-click="alteraSenha()"><i class="material-icons">lock_outline</i>Trocar senha</a></li>
+          <li><a ng-click="logout()"><i class="material-icons">power_settings_new</i>Sair</a></li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+</li>               
+</ul>
+<a href="" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>    
+<div class="nav-wrapper">  
+  <ul id="nav-mobile" class="right">      
+    <li><a ng-if="!possuoNotificacoes()" ng-click="alunoNotifications()"><i class="material-icons">notifications_none</i></a></li>      
+    <li><a ng-if="possuoNotificacoes()" ng-click="alunoNotifications()"><i class="material-icons">notifications</i></a></li>      
+  </ul>
+</div>
+</nav>
+
+<div id="modalAlunoNotificacoes" class="modal">
+  <div class="modal-content">
+    <h4>Notificações</h4>
+    <div class="row">
+      <div class="col s12 m12">
+      <div ng-repeat="notificacao in notificacoes" class="card">
+          <div class="card-content">
+            <span class="card-title">{{notificacao.titulo}}</span>
+            <p>{{notificacao.notificacao}}</p>
+          </div>          
+        </div>
+      </div>
+    </div>    
+  </div>  
+</div>

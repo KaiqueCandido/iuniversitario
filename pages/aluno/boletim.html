@@ -1,0 +1,47 @@
+<main>    
+	<div class="card">	
+		<div class="card-content">				
+			<span class="card-title center">Boletim</span>	
+			<div class="row">
+				<p class="col s12"><strong>Nome:</strong> Antonio Erismar Albuquerque de Freitas Cesar Terceiro Richard</p>
+				<p class="col s12"><strong>Ensino:</strong> Superior</p>
+				<p class="col s6"><strong>Curso:</strong> Análise e Desenvolvimento de Sistemas</p>				
+				<p class="col s6"><strong>Periodo Cursado:</strong> 2017</p>							
+			</div>
+
+			<div class="row">
+				<div class="input-field col s5"></div>
+				<div class="input-field col s2">
+					<select class="">																					
+						<option value="2017">2017</option>
+						<option value="2016">2016</option>
+						<option value="2015">2015</option>
+					</select>					
+					<label>Periodo Cursado</label>
+				</div>
+				<div class="input-field col s5"></div>
+			</div>
+
+			<table class="striped responsive-table centered bordered">
+				<thead>
+					<tr>
+						<th>Situação</th>							
+						<th>Disciplina</th>							
+						<th>MF</th>												
+						<th>Total<br/>Faltas</th>
+						<th>Freq.</th>												
+					</tr>									
+				</thead>				
+				<tbody>
+					<tr ng-repeat="boletim in boletins">
+						<td>{{boletim.situacao}}</td>						
+						<td>{{boletim.disciplina}}</td>
+						<td>{{boletim.mf}}</td>
+						<td>{{boletim.totalDeFaltas}}</td>
+						<td>{{boletim.freq}}</td>
+					</tr>			
+				</tbody>
+			</table>			
+		</div>
+	</div>
+</main>

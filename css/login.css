@@ -32,11 +32,16 @@
   font-style: italic;
 }
 
-.btn{
+.btn-page-login{
   margin-top: 20px;  
   width: 100%;
   border-radius: 15px !important;
   margin-bottom: 20px;
+  background-color: #016773 !important;
+}
+
+.btn-cor-default{
+  background-color: #016773 !important;
 }
 
 .ionImageLogo{

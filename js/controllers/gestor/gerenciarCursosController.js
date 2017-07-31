@@ -28,6 +28,7 @@ app.controller('gerenciarCursosController', function($scope, $rootScope, $state,
 	}	
 	
 	$scope.carregarCursos();
+	
 	initialiJquery();
 
 });

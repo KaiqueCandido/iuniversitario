@@ -1,7 +1,24 @@
+html, body {
+	height:75%;
+}
+main {
+	margin-top: 10px !important;
+	margin-left: 10px !important;
+	margin-right: 10px !important;
+}
+
 nav {
 	background-color: #4db6ac !important;
 }
 
-footer{
-	background-color: #4db6ac !important;
+.print {
+	color: black !important;
+}
+
+.teal.lighten-2 {
+	background-color: #2086a3 !important;
+}
+
+.card-avisos {
+	background-color: #2086a3  !important;
 }

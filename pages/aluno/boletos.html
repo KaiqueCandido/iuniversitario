@@ -1,0 +1,66 @@
+<main>    
+	<div class="card">	
+		<div class="card-content">			
+			<!-- <span class="card-title">Filtros</span>
+			<form class="col s12">
+				<div class="row">
+					<div class="input-field col s12">
+						<input id="assunto" type="text" class="validate"/>
+						<label for="assunto">Assunto</label>
+					</div>  
+					<div class="input-field col s3">
+						<select ng-model="anoDeBusca">							
+							<option value="0000">Todos</option>							
+							<option value="2015">2015</option>							
+							<option value="2016">2016</option>							
+							<option value="2017">2017</option>							
+						</select>						
+					</div> 
+					Ano de busca = {{criterioDeBusca.anoDeBusca}}	
+					<div class="input-field col s6">											
+							<input class="with-gap" name="filterSituacao" type="radio" id="pago" />
+							<label for="pago">Pago</label>
+
+							<input class="with-gap" name="filterSituacao" type="radio" id="apagar" />
+							<label for="apagar">A pagar</label>
+
+							<input class="with-gap" name="filterSituacao" type="radio" id="atrasado"  />
+							<label for="atrasado">Atrasado</label>
+
+							<input class="with-gap" name="filterSituacao" type="radio" id="todos"  />
+							<label for="todos">Todos</label>													
+					</div>					
+				</div> 
+			</form>	 -->	
+
+			<table class="striped responsive-table centered bordered">
+				<thead>
+					<tr>
+						<th>Situação</th>
+						<th>Mês/Ano</th>
+						<th>Data Venc.</th>
+						<th>Valor</th>				
+						<th>Data Pgto.</th>
+						<th>Valor Pago</th>
+						<th>Boleto</th>				
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="boleto in boletos">
+						<td>
+							<i class="material-icons tooltipped" data-position="bottom" data-delay="50" data-tooltip="Pago" style="color: green;" ng-if="boleto.situacao === 'Pago'">mood</i>
+							<i class="material-icons tooltipped" data-position="bottom" data-delay="50" data-tooltip="A pagar" style="color: blue;" ng-if="boleto.situacao === 'A Pagar'">sentiment_neutral</i>
+							<i class="material-icons tooltipped" data-position="bottom" data-delay="50" data-tooltip="Em atraso" style="color: red;" ng-if="boleto.situacao === 'Atrasado'">mood_bad</i>
+						</td>							
+						<td>{{boleto.mesAno}}</td>
+						<td>R${{boleto.valor}}</td>				
+						<td>{{boleto.dataVenc}}</td>
+						<td>{{boleto.dataPgto}}</td>
+						<td>{{boleto.valorPago}}</td>
+						<td><a href=""><i class="material-icons tooltipped print" data-position="bottom" data-delay="50" data-tooltip="Gerar boleto">print</i></a></td>
+					</tr>			
+				</tbody>
+			</table>
+		</div>
+	</div>
+</main>

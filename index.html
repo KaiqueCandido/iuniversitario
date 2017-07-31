@@ -5,33 +5,56 @@
 	<title>iEscolar Universitario</title>
 
 	<!--Importações do angular-->	
-	<script src="libs/angular/angular.js" type="text/javascript"></script>
+	<script src="libs/angular/angular.min.js" type="text/javascript"></script>
 	<script src="libs/angular-ui-router/release/angular-ui-router.min.js" type="text/javascript"></script>
 
 	<!--Importação do materialize-->
 	<!--jquery-->
 	<script src="libs/jquery/dist/jquery.min.js" type="text/javascript" ></script>
 	<!--JavaScript-->
-	<script src="libs/materialize/dist/js/materialize.js" type="text/javascript"></script>
+	<script src="libs/materialize/dist/js/materialize.min.js" type="text/javascript"></script>
 	<!--Folha de estilo-->
-	<link href="libs/materialize/dist/css/materialize.css" rel="stylesheet" type="text/css">	
+	<link href="libs/materialize/dist/css/materialize.min.css" rel="stylesheet" type="text/css">	
 	<!--icones-->
-	<link href="libs/material-design-icons/iconfont/material-icons.css" rel="stylesheet">
-<script src="//cdnjs.cloudflare.com/ajax/libs/angular-material-icons/0.7.1/angular-material-icons.min.js"></script>
+	<link href="libs/material-design-icons/iconfont/material-icons.css" rel="stylesheet">	
 	<!--Importação da app-->
 	<script src="app.js" type="text/javascript"></script>
 
 	<!--Importação das rotas-->
 	<script src="js/routers/appRouters.js" type="text/javascript"></script>
+	<script src="js/routers/gestorRouters.js" type="text/javascript"></script>
+	<script src="js/routers/alunoRouters.js" type="text/javascript"></script>
+	<script src="js/routers/professorRouters.js" type="text/javascript"></script>
 
 	<!--Importação dos controllers-->
 	<script src="js/controllers/loginController.js" type="text/javascript"></script>
-	<script src="js/controllers/gestor/headerGestorController.js" type="text/javascript"></script>
+	<!--Controllers Gestor-->	
+	<script src="js/controllers/gestor/headerGestorController.js" type="text/javascript"></script>	
 	<script src="js/controllers/gestor/contentGestorController.js" type="text/javascript"></script>
+	<script src="js/controllers/gestor/gerenciarAlunosController.js" type="text/javascript"></script>
 	<script src="js/controllers/gestor/gerenciarCursosController.js" type="text/javascript"></script>
-	<script src="js/controllers/gestor/gerenciarVestProcessoSeletivoCtrl.js" type="text/javascript"></script>
-	<script src="js/services/apiConfigValue.js" type="text/javascript"></script>
-	<script src="js/services/VestProcessoSeletivoAPI.js" type="text/javascript"></script>
+	<script src="js/controllers/gestor/gerenciarDiariosController.js" type="text/javascript"></script>	
+	<script src="js/controllers/gestor/gerenciarEnvioDeEmailController.js" type="text/javascript"></script>	
+	<script src="js/controllers/gestor/gerenciarEnvioDeSmsController.js" type="text/javascript"></script>
+	<script src="js/controllers/gestor/gerenciarInstituicoesController.js" type="text/javascript"></script>
+	<script src="js/controllers/gestor/gerenciarMatriculasController.js" type="text/javascript"></script>
+	<script src="js/controllers/gestor/gerenciarVestibularController.js" type="text/javascript"></script>
+	<!--Controllers Gestor Cadastros-->
+	<script src="js/controllers/gestor/cadastro/gerenciarAlunosController.js" type="text/javascript"></script>
+	<!--Controllers Aluno-->
+	<script src="js/controllers/aluno/headerAlunoController.js" type="text/javascript"></script>
+	<script src="js/controllers/aluno/mainAlunoController.js" type="text/javascript"></script>
+	<script src="js/controllers/aluno/meusArquivosController.js" type="text/javascript"></script>
+	<script src="js/controllers/aluno/alunoAvaliacaoInstitucionalController.js" type="text/javascript"></script>
+	<script src="js/controllers/aluno/alunoBoletosController.js" type="text/javascript"></script>
+	<script src="js/controllers/aluno/alunoBoletimController.js" type="text/javascript"></script>
+	<script src="js/controllers/aluno/alunoDiariosController.js" type="text/javascript"></script>	
+	<script src="js/controllers/aluno/alunoHistoricoController.js" type="text/javascript"></script>
+	<script src="js/controllers/aluno/alunoHorarioDasAulasController.js" type="text/javascript"></script>
+	<script src="js/controllers/aluno/alunoAlteraSenhaController.js" type="text/javascript"></script>
+	<!--Controllers Professor-->
+	<script src="js/controllers/professor/headerProfessorController.js" type="text/javascript"></script>
+	<script src="js/controllers/professor/mainProfessorController.js" type="text/javascript"></script>
 
 	<!--Folhas de estilo das paginas-->
 	<link rel="stylesheet" type="text/css" href="css/login.css">	
@@ -45,9 +68,9 @@
 	<script src="js/initializeJqueryMaterialize.js" type="text/javascript"></script>
 
 </head>
-	<body ng-app="app">			
-		<div ui-view="header"></div>
-		<div class="main" ui-view="content"></div>
-		<div ui-view="footer"></div>
-	</body>
+<body ng-app="app">			
+	<div ui-view="header"></div>
+	<div class="main" ui-view="content"></div>
+	<div ui-view="footer"></div>
+</body>
 </html>

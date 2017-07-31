@@ -1,0 +1,91 @@
+<main>    
+	<div class="row">
+		<div class="card">
+			<div class="card-content">
+				<span class="card-title center">Cadastro de Alunos</span>
+			</div>
+			<div class="row">
+				<form class="col s12">
+					<div class="row">               
+						<div class="input-field col s6">
+							<input id="nome" type="text" class="validate" ng-model="aluno.nome"></input>
+							<label for="nome">Nome do Aluno</label>
+						</div>								
+						<div class="input-field col s6">
+							<input id="sobreNome" type="text" class="validate" ng-model="aluno.sobreNome"></input>
+							<label for="sobreNome">Sobrenome do Aluno</label>
+						</div>																
+						<div class="input-field col s6">
+							<select ng-model="aluno.sexo" class="validate">
+								<option value="" disabled="" selected="">Selecione um sexo</option>
+								<option value="MASCULINO">Masculino</option>
+								<option value="FEMININO">Feminino</option>      
+								<option value="OUTRO">Outro</option>      
+							</select>
+							<label>Sexo do Aluno</label>										
+						</div>								
+						<div class="input-field col s6">
+							<input id="dataDeNascimento" type="text" class="datepicker" ng-model="aluno.dataDeNascimento"></input>
+							<label for="dataDeNascimento">Data de nascimento do Aluno</label>
+						</div>								
+						<div class="input-field col s6">
+							<select ng-model="aluno.estadoCivil">
+								<option value="" disabled="" selected="">Selecione um estado civil</option>
+								<option value="CASADO">Casado</option>
+								<option value="SOLTEIRO">Solteiro</option>      
+								<option value="VIUVO">Viuvo</option>      
+								<option value="DIVORCIADO">Divorciado</option>									
+							</select>
+							<label>Estado civil do Aluno</label>										
+						</div>								
+						<div class="input-field col s6">
+							<select ng-model="aluno.raca">
+								<option value="" disabled="" selected="">Selecione uma raça</option>
+								<option value="BRANCA">Branca</option>
+								<option value="PRETA">Preta</option>      
+								<option value="PARDA">Parda</option>      
+								<option value="AMARELA">Amarela</option>									
+								<option value="INDIGENA">Indígena</option>									
+								<option value="NAODECLARADO">Não declarado</option>								
+							</select>
+							<label>Cor/Raça do Aluno</label>										
+						</div>	
+						<div class="input-field col s4">
+							<input id="rg" type="text" class="validate" ng-model="aluno.documentoPessoais.rg"></input>
+							<label for="rg">RG do Aluno</label>
+						</div>	
+						<div class="input-field col s4">
+							<input id="orgaoEmissorDoRg" type="text" class="validate" ng-model="aluno.documentoPessoais.orgaoEmissorDoRg"></input>
+							<label for="orgaoEmissorDoRg">Orgão Emissor</label>
+						</div>	
+						<div class="input-field col s4">
+							<select ng-model="aluno.documentoPessoais.estadoDeEmissaoDoRg">
+								<option value="" disabled="" selected="">Selecione um estado</option>
+								<option value="PB">PB</option>											
+							</select>
+							<label>Estado de emissão</label>										
+						</div>	
+						<div class="input-field col s6">
+							<input id="cpf" type="text" class="validate" ng-model="aluno.documentoPessoais.cpf"></input>
+							<label for="cpf">CPF do Aluno</label>
+						</div>
+						<div class="input-field col s6">
+							<input id="registroDeNascimento" type="text" class="validate" ng-model="aluno.documentoPessoais.registroDeNascimento"></input>
+							<label for="registroDeNascimento">Registro de Nascimento do Aluno</label>
+						</div>
+						<div class="input-field col s6">
+							<input id="resevista" type="text" ng-model="aluno.documentoPessoais.resevista"></input>
+							<label for="resevista">Resevista do Aluno</label>
+						</div>
+						<div class="input-field col s6">
+							<select ng-model="aluno.statusDoCadastro" disabled="true">
+								<option value="ATIVO" disabled="true" selected="true">Ativo</option>
+							</select>
+							<label>Status do cadastro</label>										
+						</div>								
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</main>
