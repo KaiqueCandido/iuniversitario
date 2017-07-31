@@ -15,10 +15,10 @@
     "test",
     "tests"
   ],
-  "dependencies": {    
+  "dependencies": {
     "materialize": "^0.98.2",
     "angular": "^1.6.4",
     "angular-ui-router": "^1.0.4",
-    "material-design-icons": "^3.0.1"
+    "material-design-icons-dist": "^1.1.0"
   }
 }
