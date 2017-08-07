@@ -3,7 +3,11 @@ var app = angular.module('app')
 app.controller('loginController', function($scope, $state, $http, configValue){	
 	
 	$scope.autenticacao = function (login) {  	
-    	$state.go('homeGestor');
+    	$http.post(configValue.baseUrl + "/login", login).then(function(response){
+        console.log(response);
+      }, function(response){
+        console.log(response);
+      });
   	};  	
 
   	$scope.goToAluno = function () {  	
