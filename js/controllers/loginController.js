@@ -1,5 +1,6 @@
 var app = angular.module('app')
 
+
 app.controller('loginController', function($scope, $state, $http, loginService){	
 	
 	$scope.autenticacao = function (login) {  	
