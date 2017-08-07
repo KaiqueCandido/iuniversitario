@@ -1,21 +1,29 @@
 var app = angular.module('app')
 
-app.controller('loginController', function($scope, $state, $http, configValue){	
+app.controller('loginController', function($scope, $state, $http, loginService){	
 	
 	$scope.autenticacao = function (login) {  	
-    	$http.post(configValue.baseUrl + "/login", login).then(function(response){
-        console.log(response);
-      }, function(response){
-        console.log(response);
-      });
-  	};  	
+   loginService.login(login).then(function sucess(response) {
+    var headers = response.headers();       
+    if (headers.pessoatype === 'gestor') {
+      console.log('Gestor')
+    } else if (headers.pessoatype === 'rofessor') {
+      console.log('Professor')
+    } else {
+      console.log('Aluno')
+    }
+    
+  }, function error(response) {
+    console.log(response);
+  });
+ };  	
 
-  	$scope.goToAluno = function () {  	
-    	$state.go('homeAluno');
-  	};
+ $scope.goToAluno = function () {  	
+   $state.go('homeAluno');
+ };
 
-  	$scope.goToProfessor = function () {  	
-    	$state.go('homeProfessor');
-  	};  	
+ $scope.goToProfessor = function () {  	
+   $state.go('homeProfessor');
+ };  	
 
 });
