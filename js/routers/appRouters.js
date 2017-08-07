@@ -15,5 +15,16 @@ app.config(function($stateProvider, $urlRouterProvider) {
                     controller: 'loginController'
                 }
             }            
+        })                
+
+        .state('notFound', {
+            cache: false,
+            url: '/notFound',
+            views : {
+                'content':{
+                    templateUrl: 'pages/404.html',
+                    controller: 'notFoundController'
+                }
+            }            
         });                
 });

@@ -12,6 +12,7 @@ app.controller('loginController', function($scope, $state, $http, loginService){
     } else {
       console.log('Aluno')
     }
+    $state.go('notFound');
     
   }, function error(response) {
     console.log(response);
