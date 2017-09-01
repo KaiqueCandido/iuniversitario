@@ -1,0 +1,183 @@
+<main>
+  <div class="row">
+    <div class="card">                            
+      <div class="card-content">                
+        <span class="card-title center">Gerenciamento de Disciplinas</span>         
+
+        <div class="row">
+          <div class="col">
+            <a data-target="modalNovaDisciplina" ng-click="prepararCadastroDeDisciplina()" class="s1 btn-floating btn-small waves-effect waves-light green"><i class="material-icons">add</i></a>
+          </div>    
+          <div class="col">                    
+            <a data-target="modalVisualizacaoDisciplina" ng-disabled="selecionado" class="s1 btn-floating btn-small waves-effect waves-light yellow"><i class="material-icons">search</i></a>
+          </div>    
+          <div class="col">
+          <a data-target="modalEditarDisciplina" ng-click="prepararEdicaoDeDisciplina()" ng-disabled="selecionado" class="s1 btn-floating btn-small waves-effect waves-light blue"><i class="material-icons">edit</i></a>
+          </div>    
+          <div class="col">
+            <a ng-disabled="selecionado" class="s1 btn-floating btn-small waves-effect waves-light red"><i class="material-icons">delete</i></a>
+          </div>    
+          <div class="col m8">
+            <input class="form-control" type="text" ng-model="criterioDeBusca" placeholder="Qual a disciplina que você está buscando?"></input>
+          </div>                
+        </div>                 
+        <table class="highlight responsive-table">
+          <thead>
+            <tr>                                        
+              <th>Abreviação</th>
+              <th>Nome</th>
+              <th>Carga Horaria</th>                          
+            </tr>
+          </thead>        
+          <tbody>
+            <tr ng-click="selecionaDisciplina(disciplina)" ng-repeat="disciplina in disciplinas | filter:nome:criterioDeBusca">
+              <td ng-style="{'background-color': disciplina.selecionado}">{{disciplina.abreviacao}}</td>
+              <td ng-style="{'background-color': disciplina.selecionado}">{{disciplina.nome}}</td>
+              <td ng-style="{'background-color': disciplina.selecionado}">{{disciplina.cargaHoraria}}</td>
+            </tr>          
+          </tbody>
+        </table>
+      </div>    
+    </div>
+  </div>
+</main>
+
+<div id="modalNovaDisciplina" class="modal modal-fixed-footer">
+  <form ng-submit="salvarDisciplina(disciplina)">
+    <div class="modal-content">
+      <nav class="center">
+        <h5 class="brand-logo center">Nova Disciplina</h5>            
+      </nav>
+      <div class="row">        
+        <div class="row">               
+          <div class="input-field col s6">
+            <input id="nome" type="text" class="validate" ng-model="disciplina.nome" maxlength="100" required></input>
+            <label for="nome">Nome</label>
+          </div>                              
+          <div class="input-field col s6">
+            <input id="abreviacao" type="text" class="validate" ng-model="disciplina.abreviacao" maxlength="10" required></input>
+            <label for="abreviacao">Abreviação</label>
+          </div>                                                              
+          <div class="input-field col s12">
+            <label for="cargaHoraria">Carga Horaria</label><br/>
+            <p class="range-field">
+              <input type="range" id="cargaHoraria" min="0" max="500" ng-model="disciplina.cargaHoraria"/>
+            </p>
+          </div>                                                                      
+          <div class="col s12">
+            <div class="switch">
+              <label for="possuiPreRequisitos">Possui disciplinas que sejam pré-requisito?</label><br/>
+              <label>
+                Não
+                <input id="possuiPreRequisitos" type="checkbox" ng-model="possuiPreRequisitos">
+                <span class="lever"></span>
+                Sim
+              </label><br/><br/>
+            </div>
+          </div>        
+          <div ng-show="possuiPreRequisitos">
+            <div class="col s12"><span>Selecione a(s) disciplina(s) que sejam pré-requisito(s)</span></div>
+            <div ng-repeat="disciplina in disciplinas" class="col s6">          
+              <p>
+                <input ng-model="disciplina.selected" type="checkbox" id="{{disciplina.id}}"/>
+                <label for="{{disciplina.id}}">{{disciplina.nome}}</label>
+              </p>
+            </div>
+          </div>        
+        </div>            
+      </div>       
+    </div>
+    <div class="modal-footer">
+      <button class="waves-effect waves-green btn-flat" type="submit">Salvar</button>      
+      <a class="modal-action modal-close waves-effect waves-red btn-flat left ">Cancelar</a>
+    </div>    
+  </form>
+</div>
+
+<div id="modalVisualizacaoDisciplina" class="modal modal-fixed-footer">  
+  <div class="modal-content">
+    <nav class="center">
+      <h5 class="brand-logo center">Detalhes da Disciplina</h5>            
+    </nav>
+    <div class="row">        
+      <div class="row">               
+        <div class="input-field col s4">          
+          <label for="nome">Nome</label><br/>
+          <p id="nome">{{disciplinaSelecionada.nome}}</p>
+        </div>                                            
+        <div class="input-field col s4">          
+          <label for="abreviacao">Abreviação</label><br/>
+          <p id="abreviacao">{{disciplinaSelecionada.abreviacao}}</p>
+        </div>                                            
+        <div class="input-field col s4">          
+          <label for="cargaHoraria">Carga Horaria</label><br/>
+          <p id="cargaHoraria">{{disciplinaSelecionada.cargaHoraria}}</p>
+        </div>                                            
+        <div ng-show="disciplinaSelecionada.preRequisitos.length > 0">
+          <!-- <div class="col s12"><span>Disciplina(s) pré-requisito(s)</span></div> -->
+          <div class="col s12"><label>Disciplina(s) pré-requisito(s)</label></div>
+          <div ng-repeat="disciplinaPreRequisito in disciplinaSelecionada.preRequisitos" class="col s6">          
+            <p>              
+              <p>{{disciplinaPreRequisito.nome}}</p>              
+            </p>
+          </div>
+        </div>        
+      </div>            
+    </div>       
+  </div>
+  <div class="modal-footer">      
+    <a class="modal-action modal-close waves-effect waves-red btn-flat">Fechar</a>
+  </div>      
+</div>
+
+<div id="modalEditarDisciplina" class="modal modal-fixed-footer">
+  <form ng-submit="editarDisciplina(disciplinaSelecionada)">
+    <div class="modal-content">
+      <nav class="center">
+        <h5 class="brand-logo center">Editar Disciplina</h5>            
+      </nav>
+      <div class="row">        
+        <div class="row">               
+          <div class="input-field col s6">
+            <input id="nome" type="text" class="validate" ng-model="disciplinaSelecionada.nome" maxlength="100" required></input>
+            <label for="nome">Nome</label>
+          </div>                              
+          <div class="input-field col s6">
+            <input id="abreviacao" type="text" class="validate" ng-model="disciplinaSelecionada.abreviacao" maxlength="10" required></input>
+            <label for="abreviacao">Abreviação</label>
+          </div>                                                              
+          <div class="input-field col s12">
+            <label for="cargaHoraria">Carga Horaria</label><br/>
+            <p class="range-field">
+              <input type="range" id="cargaHoraria" min="0" max="500" ng-model="disciplinaSelecionada.cargaHoraria"/>
+            </p>
+          </div>                                                                      
+          <div class="col s12">
+            <div class="switch">
+              <label for="possuiPreRequisitos">Possui disciplinas que sejam pré-requisito?</label><br/>
+              <label>
+                Não
+                <input id="possuiPreRequisitos" type="checkbox" ng-model="possuiPreRequisitos">
+                <span class="lever"></span>
+                Sim
+              </label><br/><br/>
+            </div>
+          </div>        
+          <div ng-show="possuiPreRequisitos">
+            <div class="col s12"><span>Selecione a(s) disciplina(s) que sejam pré-requisito(s)</span></div>
+            <div ng-repeat="disciplina in disciplinas" class="col s6">          
+              <p>
+                <input ng-model="disciplina.selected" type="checkbox" id="{{disciplina.id}}"/>
+                <label for="{{disciplina.id}}">{{disciplina.nome}}</label>
+              </p>
+            </div>            
+          </div>        
+        </div>            
+      </div>       
+    </div>
+    <div class="modal-footer">
+      <button class="waves-effect waves-green btn-flat" type="submit">Salvar</button>      
+      <a class="modal-action modal-close waves-effect waves-red btn-flat left ">Cancelar</a>
+    </div>    
+  </form>
+</div>

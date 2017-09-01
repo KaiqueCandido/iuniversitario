@@ -1,5 +1,5 @@
 var app = angular.module('app')
-app.controller('contentGestorController', function($scope, $state){	
+app.controller('contentGestorController', function($scope, $rootScope, $state){			
 
 	initialiJquery();
 

@@ -17,6 +17,10 @@ app.controller('headerGestorController', function($scope, $state){
 		$state.go('gestorGerenciarCursos');					
 	};	
 
+	$scope.gerenciarDisciplinas = function () {						
+		$state.go('gestorGerenciarDisciplinas');					
+	};	
+
 	$scope.gerenciarAlunos = function(){
 		$state.go("gestorGerenciarAlunos");
 	};

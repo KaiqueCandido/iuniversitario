@@ -1,10 +1,11 @@
 html, body {
 	height:75%;
+	padding-bottom: 100 !important;
 }
 main {
 	margin-top: 10px !important;
 	margin-left: 10px !important;
-	margin-right: 10px !important;
+	margin-right: 10px !important;	
 }
 
 nav {
@@ -21,4 +22,8 @@ nav {
 
 .card-avisos {
 	background-color: #2086a3  !important;
+}
+
+.selecionado{
+	background-color: grey;
 }

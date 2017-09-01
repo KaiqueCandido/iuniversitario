@@ -1,0 +1,10 @@
+.toasts-sucess{
+	background-color: #2086a3 !important;	
+}
+.toasts-error{
+	background-color: red !important;
+}
+.toasts-warning{
+	background-color: yellow !important;
+	color: black !important;
+}

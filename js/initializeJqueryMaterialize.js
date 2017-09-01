@@ -2,7 +2,7 @@ function initialiJquery() {
 	$(".button-collapse").sideNav();
 	$('.collapsible').collapsible();	    
 	$('.modal').modal();
-	$('.tooltipped').tooltip({delay: 50});
+	$('.tooltipped').tooltip({delay: 50});	
 	$('select').material_select();
 	$('ul.tabs').tabs();
 	$('input, textarea').characterCounter();  

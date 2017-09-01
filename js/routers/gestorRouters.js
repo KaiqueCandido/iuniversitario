@@ -31,8 +31,8 @@ app.config(function($stateProvider, $urlRouterProvider) {
                 controller: 'headerGestorController'
             },
             'content':{
-                templateUrl:"pages/gestor/gerenciarInstituicoes.html",
-                controller:"gerenciarInstituicoesController"
+                templateUrl:"pages/gestor/instituicoes.html",
+                controller:"instituicoesController"
             },   
             'footer':{
                 templateUrl: 'pages/footer.html'
@@ -49,8 +49,8 @@ app.config(function($stateProvider, $urlRouterProvider) {
                 controller: 'headerGestorController'
             },
             'content':{
-                templateUrl:"pages/gestor/gerenciarVestibular.html",
-                controller:"gerenciarVestibularController"
+                templateUrl:"pages/gestor/vestibular.html",
+                controller:"vestibularController"
             },   
             'footer':{
                 templateUrl: 'pages/footer.html'
@@ -67,8 +67,26 @@ app.config(function($stateProvider, $urlRouterProvider) {
                 controller: 'headerGestorController'
             },
             'content':{
-                templateUrl:"pages/gestor/gerenciarCursos.html",
-                controller:"gerenciarCursosController"
+                templateUrl:"pages/gestor/cursos.html",
+                controller:"cursosController"
+            },   
+            'footer':{
+                templateUrl: 'pages/footer.html'
+            }             
+        }                               
+    })
+
+    .state("gestorGerenciarDisciplinas", {
+        cache: false,
+        url:"/gestorGerenciarDisciplinas",
+        views:{                
+            'header':{
+                templateUrl: 'pages/gestor/headerGestor.html',
+                controller: 'headerGestorController'
+            },
+            'content':{
+                templateUrl:"pages/gestor/disciplinas.html",
+                controller:"disciplinasController"
             },   
             'footer':{
                 templateUrl: 'pages/footer.html'
@@ -85,8 +103,8 @@ app.config(function($stateProvider, $urlRouterProvider) {
                 controller: 'headerGestorController'
             },
             'content':{
-                templateUrl:"pages/gestor/gerenciarAlunos.html",
-                controller:"gerenciarAlunosController"
+                templateUrl:"pages/gestor/alunos.html",
+                controller:"alunosController"
             },   
             'footer':{
                 templateUrl: 'pages/footer.html'
@@ -103,8 +121,8 @@ app.config(function($stateProvider, $urlRouterProvider) {
                 controller: 'headerGestorController'
             },
             'content':{
-                templateUrl:"pages/gestor/gerenciarMatriculas.html",
-                controller:"gerenciarMatriculasController"
+                templateUrl:"pages/gestor/matriculas.html",
+                controller:"matriculasController"
             },   
             'footer':{
                 templateUrl: 'pages/footer.html'
@@ -121,8 +139,8 @@ app.config(function($stateProvider, $urlRouterProvider) {
                 controller: 'headerGestorController'
             },
             'content':{
-                templateUrl:"pages/gestor/gerenciarDiarios.html",
-                controller:"gerenciarDiariosController"
+                templateUrl:"pages/gestor/diarios.html",
+                controller:"diariosController"
             },   
             'footer':{
                 templateUrl: 'pages/footer.html'
@@ -139,8 +157,8 @@ app.config(function($stateProvider, $urlRouterProvider) {
                 controller: 'headerGestorController'
             },
             'content':{
-                templateUrl:"pages/gestor/gerenciarGraficos.html",
-                controller:"gerenciarGraficosController"
+                templateUrl:"pages/gestor/graficos.html",
+                controller:"graficosController"
             },   
             'footer':{
                 templateUrl: 'pages/footer.html'
@@ -157,8 +175,8 @@ app.config(function($stateProvider, $urlRouterProvider) {
                 controller: 'headerGestorController'
             },
             'content':{
-                templateUrl:"pages/gestor/gerenciarImprimirRelatorios.html",
-                controller:"gerenciarImprimirRelatoriosController"
+                templateUrl:"pages/gestor/imprimirRelatorios.html",
+                controller:"imprimirRelatoriosController"
             },   
             'footer':{
                 templateUrl: 'pages/footer.html'
@@ -176,7 +194,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
             },
             'content':{
                 templateUrl:"pages/gestor/envioDeSms.html",
-                controller:"gerenciarEnvioDeSmsController"
+                controller:"envioDeSmsController"
             },   
             'footer':{
                 templateUrl: 'pages/footer.html'
@@ -194,7 +212,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
             },
             'content':{
                 templateUrl:"pages/gestor/envioDeEmail.html",
-                controller:"gerenciarenvioDeEmailController"
+                controller:"envioDeEmailController"
             },   
             'footer':{
                 templateUrl: 'pages/footer.html'
@@ -212,7 +230,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
             },
             'content':{
                 templateUrl:"pages/gestor/trocarSenha.html",
-                controller:"gerenciarTrocarSenhaController"
+                controller:"trocarSenhaController"
             },   
             'footer':{
                 templateUrl: 'pages/footer.html'
@@ -236,16 +254,6 @@ app.config(function($stateProvider, $urlRouterProvider) {
                 templateUrl: 'pages/footer.html'
             }             
         }                               
-    })    
-
-
-
-
-
-
-
-
-
-    ;		
+    });		
 
 });
