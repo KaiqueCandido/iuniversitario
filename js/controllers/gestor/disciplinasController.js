@@ -1,10 +1,12 @@
 var app = angular.module('app');
 app.controller('disciplinasController', function($scope, $rootScope, $state, disciplinaService){		
 	$scope.selecionado = true;
+	$scope.disciplinaSelecionadaInativa = true;
 	$scope.disciplinaSelecionada = {};
 	$scope.disciplinas = [];
 	$scope.disciplinasPreRequisitos = [];
 	$scope.disciplina = {};
+	$scope.statusDasEntidades = 'ATIVO';
 
 	/*Listar disciplinas do banco*/
 	$scope.listarDisciplinas = function() {
@@ -13,7 +15,7 @@ app.controller('disciplinasController', function($scope, $rootScope, $state, dis
 			$scope.disciplinas = response.data;	
 		}, function error() {
 			$rootScope.pageLoading = false;
-			alert('Não foi possivel carregar as disciplinas');
+			Materialize.toast('Não foi possivel carregar as disciplinas, por favor tente novamente!', 5000, 'rounded toasts-warning');
 		});
 	};
 
@@ -73,7 +75,7 @@ app.controller('disciplinasController', function($scope, $rootScope, $state, dis
 			}			
 		} else {
 			disciplina.preRequisitos = [];
-			disciplinaService.salvar(disciplina).then(function sucess(response) {
+			disciplinaService.atualizar(disciplina).then(function sucess(response) {
 				$rootScope.pageLoading = false;
 				Materialize.toast('Disciplina ' + disciplina.nome + ' foi editada com sucesso!', 5000, 'rounded toasts-sucess');
 				$scope.listarDisciplinas();
@@ -85,6 +87,40 @@ app.controller('disciplinasController', function($scope, $rootScope, $state, dis
 			});
 		}		
 	};	
+
+	$scope.excluirDisciplina = function() {
+		disciplinaService.excluir($scope.disciplinaSelecionada).then(function sucess(response) {
+			$rootScope.pageLoading = false;
+			Materialize.toast('Disciplina ' + $scope.disciplinaSelecionada.nome + ' foi INATIVADA!', 5000, 'rounded toasts-sucess');
+			$scope.listarDisciplinas();			
+			delete $scope.disciplinaSelecionada;
+		}, function error() {
+			$rootScope.pageLoading = false;
+			Materialize.toast('Não foi possivel excluir a disciplina, por favor tente novamente!', 5000, 'rounded toasts-error');
+		});
+	}
+
+	$scope.ativarDisciplina = function() {		
+		$('#modalConfirmacao').modal('open');
+		
+		/*		var $toastContent = Materialize.toast('Deseja realmente ativar a disciplina' +  $scope.disciplinaSelecionada.nome + '?', 60000,'rounded toasts-warning');
+		disciplinaService.ativar($scope.disciplinaSelecionada).then(function sucess(response) {
+			$rootScope.pageLoading = false;
+			Materialize.toast('Disciplina ' + $scope.disciplinaSelecionada.nome + ' foi ATIVADA!', 5000, 'rounded toasts-sucess');
+			$scope.listarDisciplinas();			
+			delete $scope.disciplinaSelecionada;
+		}, function error() {
+			$rootScope.pageLoading = false;
+			Materialize.toast('Não foi possivel ativar a disciplina, por favor tente novamente!', 5000, 'rounded toasts-warning');
+		});*/
+	}
+
+	$scope.alternaStatusDasEntidades = function(){
+		$scope.statusDasEntidades === 'ATIVO' ? $scope.statusDasEntidades = 'INATIVO' : $scope.statusDasEntidades = 'ATIVO';
+		$scope.selecionado = true;
+		$scope.disciplinaSelecionadaInativa = true;
+		$scope.limpaSelecoes();
+	}
 
 	$scope.prepararCadastroDeDisciplina = function() {
 		$scope.disciplinas.forEach(function(disciplina){			
@@ -112,11 +148,19 @@ app.controller('disciplinasController', function($scope, $rootScope, $state, dis
 		if(disciplina.selecionado === 'grey') {
 			disciplina.selecionado = 'none';
 			$scope.selecionado = true;
+			$scope.disciplinaSelecionadaInativa = true;
 		} else {
-			$scope.limpaSelecoes();
-			disciplina.selecionado = 'grey';
-			$scope.selecionado = false;			
-			$scope.disciplinaSelecionada = disciplina;
+			if (disciplina.statusDoCadastro === 'ATIVO'){
+				$scope.limpaSelecoes();
+				disciplina.selecionado = 'grey';
+				$scope.selecionado = false;			
+				$scope.disciplinaSelecionada = disciplina;
+			} else {
+				$scope.limpaSelecoes();
+				disciplina.selecionado = 'grey';
+				$scope.disciplinaSelecionada = disciplina;
+				$scope.disciplinaSelecionadaInativa = false;
+			}
 		}
 	};
 
