@@ -15,10 +15,10 @@
           <a data-target="modalEditarDisciplina" ng-click="prepararEdicaoDeDisciplina()" ng-disabled="selecionado" class="s1 btn-floating btn-small waves-effect waves-light blue tooltipped" data-position="bottom" data-delay="50" data-tooltip="Editar Disciplina"><i class="material-icons">edit</i></a>
           </div>    
           <div class="col">
-            <a ng-disabled="selecionado" ng-click="excluirDisciplina()" class="s1 btn-floating btn-small waves-effect waves-light red tooltipped" data-position="bottom" data-delay="50" data-tooltip="Inativar Disciplina"><i class="material-icons">delete</i></a>
+            <a ng-disabled="selecionado" data-target="modalConfirmacaoExclusaoDeDisciplina" class="s1 btn-floating btn-small waves-effect waves-light red tooltipped" data-position="bottom" data-delay="50" data-tooltip="Inativar Disciplina"><i class="material-icons">delete</i></a>
           </div>
           <div class="col">
-            <a ng-hide="disciplinaSelecionadaInativa" ng-click="ativarDisciplina()" class="s1 btn-floating btn-small waves-effect waves-light orange tooltipped" data-position="bottom" data-delay="50" data-tooltip="Ativar Disciplina"><i class="material-icons">check_box</i></a>
+            <a ng-hide="disciplinaSelecionadaInativa" data-target="modalConfirmacaoAtivacaoDeDisciplina" class="s1 btn-floating btn-small waves-effect waves-light orange tooltipped" data-position="bottom" data-delay="50" data-tooltip="Ativar Disciplina"><i class="material-icons">check_box</i></a>
           </div>    
           <div class="col m8">
             <input class="form-control" type="text" ng-model="criterioDeBusca" placeholder="Qual a disciplina que você está buscando?"></input>
@@ -186,13 +186,25 @@
     </div>    
   </form>
 </div>
-<div id="modalConfirmacao" class="modal bottom-sheet">
+
+<div id="modalConfirmacaoExclusaoDeDisciplina" class="modal bottom-sheet">
   <div class="modal-content modal-confirmacao">
     <h5>Confirmar operação</h5>
-    <p>Por favor confirma a operação!</p>
+    <p>Deseja realmente excluir essa disciplina, caso exclua a mesma será Inativada!</p>
   </div>
   <div class="modal-footer">
-    <button class="waves-effect waves-green btn-flat">Confirmar</button>      
+    <button ng-click="excluirDisciplina()" class="waves-effect waves-green btn-flat">Confirmar</button>      
+    <button class="modal-action modal-close waves-effect waves-red btn-flat left">Cancelar</button>
+  </div>
+</div>
+
+<div id="modalConfirmacaoAtivacaoDeDisciplina" class="modal bottom-sheet">
+  <div class="modal-content modal-confirmacao">
+    <h5>Confirmar operação</h5>
+    <p>Deseja realmente ativar essa disciplina, caso atuve a mesma será Ativada!</p>
+  </div>
+  <div class="modal-footer">
+    <button ng-click="ativarDisciplina()" class="waves-effect waves-green btn-flat">Confirmar</button>      
     <button class="modal-action modal-close waves-effect waves-red btn-flat left">Cancelar</button>
   </div>
 </div>

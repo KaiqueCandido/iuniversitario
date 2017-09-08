@@ -1,5 +1,5 @@
 .toasts-sucess{
-	background-color: #2086a3 !important;	
+	background-color: green !important;	
 }
 .toasts-error{
 	background-color: red !important;
@@ -7,4 +7,32 @@
 .toasts-warning{
 	background-color: yellow !important;
 	color: black !important;
+}
+
+.toast {
+	border-radius: 2px !important;
+    top: 35px !important;
+    width: auto !important;
+    clear: both !important;
+    margin-top: 10px !important;
+    position: relative !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: 48px !important;
+    line-height: 1.5em !important;
+    word-break: break-all !important;
+    background-color: #323232 !important;
+    padding: 10px 25px !important;
+    font-size: 1.1rem !important;
+    font-weight: 300 !important;
+    color: #fff !important;
+    display: -webkit-flex !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+    -webkit-align-items: center !important;
+    -ms-flex-align: center !important;
+    align-items: center !important;
+    -webkit-justify-content: space-between !important;
+    -ms-flex-pack: justify !important;
+    justify-content: space-between !important;
 }

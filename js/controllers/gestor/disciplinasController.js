@@ -87,32 +87,32 @@ app.controller('disciplinasController', function($scope, $rootScope, $state, dis
 			});
 		}		
 	};	
-
-	$scope.excluirDisciplina = function() {
+Materialize.toast('I am a toast!');
+	$scope.excluirDisciplina = function() {		
+		
 		disciplinaService.excluir($scope.disciplinaSelecionada).then(function sucess(response) {
 			$rootScope.pageLoading = false;
 			Materialize.toast('Disciplina ' + $scope.disciplinaSelecionada.nome + ' foi INATIVADA!', 5000, 'rounded toasts-sucess');
 			$scope.listarDisciplinas();			
 			delete $scope.disciplinaSelecionada;
+			$('#modalConfirmacaoExclusaoDeDisciplina').modal('close');
 		}, function error() {
 			$rootScope.pageLoading = false;
 			Materialize.toast('Não foi possivel excluir a disciplina, por favor tente novamente!', 5000, 'rounded toasts-error');
 		});
 	}
 
-	$scope.ativarDisciplina = function() {		
-		$('#modalConfirmacao').modal('open');
-		
-		/*		var $toastContent = Materialize.toast('Deseja realmente ativar a disciplina' +  $scope.disciplinaSelecionada.nome + '?', 60000,'rounded toasts-warning');
+	$scope.ativarDisciplina = function() {							
 		disciplinaService.ativar($scope.disciplinaSelecionada).then(function sucess(response) {
 			$rootScope.pageLoading = false;
 			Materialize.toast('Disciplina ' + $scope.disciplinaSelecionada.nome + ' foi ATIVADA!', 5000, 'rounded toasts-sucess');
 			$scope.listarDisciplinas();			
 			delete $scope.disciplinaSelecionada;
+			$('#modalConfirmacaoAtivacaoDeDisciplina').modal('close');
 		}, function error() {
 			$rootScope.pageLoading = false;
 			Materialize.toast('Não foi possivel ativar a disciplina, por favor tente novamente!', 5000, 'rounded toasts-warning');
-		});*/
+		});
 	}
 
 	$scope.alternaStatusDasEntidades = function(){
