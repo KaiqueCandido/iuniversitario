@@ -136,7 +136,7 @@
 </div>
 
 <div id="modalEditarDisciplina" class="modal modal-fixed-footer">
-  <form ng-submit="editarDisciplina(disciplinaSelecionada)">
+  <form>
     <div class="modal-content">
       <nav class="center">
         <h5 class="brand-logo center">Editar Disciplina</h5>            
@@ -180,9 +180,9 @@
         </div>            
       </div>       
     </div>
-    <div class="modal-footer">
-      <button class="waves-effect waves-green btn-flat" type="submit">Atualizar</button>      
-      <a class="modal-action modal-close waves-effect waves-red btn-flat left ">Cancelar</a>
+    <div class="modal-footer">          
+      <a class="waves-effect waves-green btn-flat" data-target="modalConfirmacaoAtualizacaoDeDisciplina">Atualizar</a>
+      <a class="modal-action modal-close waves-effect waves-red btn-flat left">Cancelar</a>
     </div>    
   </form>
 </div>
@@ -198,10 +198,21 @@
   </div>
 </div>
 
+<div id="modalConfirmacaoAtualizacaoDeDisciplina" class="modal bottom-sheet">
+  <div class="modal-content modal-confirmacao">
+    <h5>Confirmar operação</h5>
+    <p>Deseja realmente atualizar essa disciplina?!</p>
+  </div>
+  <div class="modal-footer">
+    <button ng-click="editarDisciplina(disciplinaSelecionada)" class="waves-effect waves-green btn-flat">Confirmar</button>      
+    <button class="modal-action modal-close waves-effect waves-red btn-flat left">Cancelar</button>
+  </div>
+</div>
+
 <div id="modalConfirmacaoAtivacaoDeDisciplina" class="modal bottom-sheet">
   <div class="modal-content modal-confirmacao">
     <h5>Confirmar operação</h5>
-    <p>Deseja realmente ativar essa disciplina, caso atuve a mesma será Ativada!</p>
+    <p>Deseja realmente ativar essa disciplina?</p>
   </div>
   <div class="modal-footer">
     <button ng-click="ativarDisciplina()" class="waves-effect waves-green btn-flat">Confirmar</button>      

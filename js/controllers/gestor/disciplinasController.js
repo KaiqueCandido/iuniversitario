@@ -61,8 +61,10 @@ app.controller('disciplinasController', function($scope, $rootScope, $state, dis
 			});	
 			if(disciplina.preRequisitos.length > 0) {
 				disciplinaService.atualizar(disciplina).then(function sucess(response) {
-					$rootScope.pageLoading = false;
+					$rootScope.pageLoading = false;															
 					Materialize.toast('Disciplina ' + disciplina.nome + ' foi editada com sucesso!', 5000, 'rounded toasts-sucess');
+					$('#modalEditarDisciplina').modal('close');
+					$('#modalConfirmacaoAtualizacaoDeDisciplina').modal('close');
 					$scope.listarDisciplinas();
 					delete $scope.disciplina;
 					delete $scope.disciplinaSelecionada;
@@ -78,6 +80,8 @@ app.controller('disciplinasController', function($scope, $rootScope, $state, dis
 			disciplinaService.atualizar(disciplina).then(function sucess(response) {
 				$rootScope.pageLoading = false;
 				Materialize.toast('Disciplina ' + disciplina.nome + ' foi editada com sucesso!', 5000, 'rounded toasts-sucess');
+				$('#modalEditarDisciplina').modal('close');
+				$('#modalConfirmacaoAtualizacaoDeDisciplina').modal('close');
 				$scope.listarDisciplinas();
 				delete $scope.disciplina;
 				delete $scope.disciplinaSelecionada;
@@ -87,14 +91,14 @@ app.controller('disciplinasController', function($scope, $rootScope, $state, dis
 			});
 		}		
 	};	
-Materialize.toast('I am a toast!');
-	$scope.excluirDisciplina = function() {		
-		
+
+	$scope.excluirDisciplina = function() {				
 		disciplinaService.excluir($scope.disciplinaSelecionada).then(function sucess(response) {
 			$rootScope.pageLoading = false;
 			Materialize.toast('Disciplina ' + $scope.disciplinaSelecionada.nome + ' foi INATIVADA!', 5000, 'rounded toasts-sucess');
 			$scope.listarDisciplinas();			
 			delete $scope.disciplinaSelecionada;
+			$scope.selecionado = true;
 			$('#modalConfirmacaoExclusaoDeDisciplina').modal('close');
 		}, function error() {
 			$rootScope.pageLoading = false;
@@ -107,7 +111,8 @@ Materialize.toast('I am a toast!');
 			$rootScope.pageLoading = false;
 			Materialize.toast('Disciplina ' + $scope.disciplinaSelecionada.nome + ' foi ATIVADA!', 5000, 'rounded toasts-sucess');
 			$scope.listarDisciplinas();			
-			delete $scope.disciplinaSelecionada;
+			delete $scope.disciplinaSelecionada;			
+			$scope.disciplinaSelecionadaInativa = true;
 			$('#modalConfirmacaoAtivacaoDeDisciplina').modal('close');
 		}, function error() {
 			$rootScope.pageLoading = false;
