@@ -2,25 +2,28 @@
 	<div class="row">
 		<div class="card">
 			<div class="card-content">
-				<span class="card-title center">Gerenciamento de Instituições</span>					
+				<span class="card-title center">Gerenciamento de Instituições</span>			
 				
 				<div class="row">
 					<div class="col">
-						<a data-target="modalNovaInstituicao" class="s1 btn-floating btn-small waves-effect waves-light green"><i class="material-icons">add</i></a>
+						<a data-target="modalNovaInstituicao" ng-click="prepararCadastroDeinstituicao()" class="s1 btn-floating btn-small waves-effect waves-light green tooltipped" data-position="bottom" data-delay="50" data-tooltip="Nova Instituicao"><i class="material-icons">add</i></a>
 					</div>    
 					<div class="col">                    
-						<a ng-disabled="selecionado" class="s1 btn-floating btn-small waves-effect waves-light yellow"><i class="material-icons">search</i></a>
+						<a data-target="modalVisualizacaoInstituicao" ng-disabled="selecionado" class="s1 btn-floating btn-small waves-effect waves-light yellow tooltipped" data-position="bottom" data-delay="50" data-tooltip="Detalhes da Instituicao"><i class="material-icons">search</i></a>
 					</div>    
 					<div class="col">
-						<a ng-disabled="selecionado" class="s1 btn-floating btn-small waves-effect waves-light blue"><i class="material-icons">edit</i></a>
+						<a data-target="modalEditarInstituicao" ng-disabled="selecionado" class="s1 btn-floating btn-small waves-effect waves-light blue tooltipped" data-position="bottom" data-delay="50" data-tooltip="Editar Instituicao"><i class="material-icons">edit</i></a>
 					</div>    
 					<div class="col">
-						<a ng-disabled="selecionado" class="s1 btn-floating btn-small waves-effect waves-light red"><i class="material-icons">delete</i></a>
+						<a ng-disabled="selecionado" data-target="modalConfirmacaoExclusaoDeInstituicao" class="s1 btn-floating btn-small waves-effect waves-light red tooltipped" data-position="bottom" data-delay="50" data-tooltip="Inativar Instituicao"><i class="material-icons">delete</i></a>
+					</div>
+					<div class="col">
+						<a ng-hide="instituicaoSelecionadaInativa" data-target="modalConfirmacaoAtivacaoDeInstituicao" class="s1 btn-floating btn-small waves-effect waves-light orange tooltipped" data-position="bottom" data-delay="50" data-tooltip="Ativar Instituicao"><i class="material-icons">check_box</i></a>
 					</div>    
-					<div class="col m9">
-						<input class="form-control" type="text" ng-model="criterioDeBusca" placeholder="Qual o aluno que você está buscando?"></input>
+					<div class="col m8">
+						<input class="form-control" type="text" ng-model="criterioDeBusca" placeholder="Qual a instituicao que você está buscando?"></input>
 					</div>                
-				</div>
+				</div>  
 
 				<table class="highlight responsive-table">
 					<thead>
@@ -31,10 +34,10 @@
 						</tr>
 					</thead>        
 					<tbody>
-						<tr ng-click="selecionaInstituicao(instituicao)" ng-repeat="instituicao in instituicoes | filter:{nome:criterioDeBusca}">
+						<tr ng-click="selecionaInstituicao(instituicao)" ng-repeat="instituicao in instituicoes | filter:{nome:criterioDeBusca} | filter:{statusDoCadastro:statusDasEntidades}:true">
 							<td ng-style="{'background-color': instituicao.selecionado}">{{instituicao.sigla}}</td>
 							<td ng-style="{'background-color': instituicao.selecionado}">{{instituicao.nome}}</td>
-							<td ng-style="{'background-color': instituicao.selecionado}">{{instituicao.status}}</td>
+							<td ng-style="{'background-color': instituicao.selecionado}">{{instituicao.statusDoCadastro}}</td>
 						</tr>          
 					</tbody>
 				</table>
@@ -44,31 +47,67 @@
 </main>
 
 <div id="modalNovaInstituicao" class="modal modal-fixed-footer">
-	<div class="modal-content">
-		<nav class="center">
-			<a class="brand-logo center">Cadastro de Instituição</a>
-		</nav>
-		<div class="row">
-			<form class="col s12">
+	<form ng-submit="salvarInstituicao(instituicao)">
+		<div class="modal-content">
+			<nav class="center">
+				<h5 class="brand-logo center">Nova Instituição</h5> 
+			</nav>
+			<div class="row">
 				<div class="row">               
 					<div class="input-field col s12">
-						<input id="last_name" type="text" class="validate" ng-model="novoCurso.nome"></input>
-						<label for="last_name">Nome do Curso</label>
+						<input id="nome" type="text" class="validate" ng-model="instituicao.nome" required></input>
+						<label for="nome">Nome da Instituição</label>
 					</div>
 					<div class="input-field col s6">
-						<input id="last_name" type="text" class="validate" ng-model="novoCurso.sigla"></input>
-						<label for="last_name">Sigla do Curso</label>
+						<input id="logradouro" type="text" class="validate" ng-model="instituicao.endereco.logradouro" required></input>
+						<label for="logradouro">Logradouro</label>
 					</div>
 					<div class="input-field col s6">
-						<input id="last_name" type="text" class="validate" ng-model="novoCurso.valorMensalidade"></input> 
-						<label for="last_name">Valor da Mensalidade</label>
+						<input id="bairro" type="text" class="validate" ng-model="instituicao.endereco.bairro" required></input> 
+						<label for="bairro">Bairro</label>
+					</div>
+					<div class="input-field col s6">
+						<input id="complemento" type="text" class="validate" ng-model="instituicao.endereco.complemento"></input> 
+						<label for="complemento">Complemento</label>
+					</div>
+					<div class="input-field col s6">
+						<input id="numero" type="text" class="validate" ng-model="instituicao.endereco.numero"></input> 
+						<label for="numero">Numero</label>
+					</div>
+					<div class="input-field col s6">						
+						<select ng-model="estadoSelecionado" ng-change="listarCidades()">
+							<option value="" selected disabled>Selecione um estado</option>
+							<optgroup label="Nordeste">
+								<option ng-repeat="estado in estados | filter:{regiao:'Nordeste'}" value="{{estado}}">{{estado.uf}}</option>
+							</optgroup>
+							<optgroup label="Norte">
+								<option ng-repeat="estado in estados | filter:{regiao:'Norte'}" value="{{estado}}">{{estado.uf}}</option>
+							</optgroup>
+							<optgroup label="Centro-Oeste">
+								<option ng-repeat="estado in estados | filter:{regiao:'Centro-Oeste'}" value="{{estado}}">{{estado.uf}}</option>
+							</optgroup>
+							<optgroup label="Sudeste">
+								<option ng-repeat="estado in estados | filter:{regiao:'Sudeste'}" value="{{estado}}">{{estado.uf}}</option>
+							</optgroup>
+							<optgroup label="Sul">
+								<option ng-repeat="estado in estados | filter:{regiao:'Sul'}" value="{{estado}}">{{estado.uf}}</option>
+							</optgroup>
+						</select>						
+						<label>Estado</label>						
+					</div>	
+					aa
+					{{estadoSelecionado}}	
+					aa
+					<div class="input-field col s6">
+						<input id="cep" type="text" class="validate" ng-model="instituicao.endereco.cep"></input> 
+						<label for="cep">Cep</label>
 					</div>
 				</div>
-			</form>
-		</div>       
-	</div>
-	<div class="modal-footer">
-		<a href="" class="modal-action modal-close waves-effect waves-green btn-flat ">Salvar</a>
-		<a href="" class="modal-action modal-close waves-effect waves-red btn-flat left ">Cancelar</a>
-	</div>
+			</div>       
+		</div>
+		<div class="modal-footer">
+			<a href="" class="modal-action modal-close waves-effect waves-green btn-flat ">Salvar</a>
+			<a href="" class="modal-action modal-close waves-effect waves-red btn-flat left ">Cancelar</a>
+		</div>
+	</form>
 </div>

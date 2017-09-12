@@ -1,6 +1,4 @@
 var app = angular.module('app')
-app.controller('contentGestorController', function($scope, $rootScope, $state){			
-
-	initialiJquery();
+app.controller('contentGestorController', function($scope, $rootScope, $state){				
 
 })
