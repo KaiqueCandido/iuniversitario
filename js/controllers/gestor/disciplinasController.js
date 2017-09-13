@@ -3,16 +3,24 @@ app.controller('disciplinasController', function($scope, $rootScope, $state, dis
 	$scope.selecionado = true;
 	$scope.disciplinaSelecionadaInativa = true;
 	$scope.disciplinaSelecionada = {};
-	$scope.disciplinas = [];
+	$scope.disciplinas = [{abreviacao: '-', nome: '-', cargaHoraria: '-', statusDoCadastro: '-'}];
 	$scope.disciplinasPreRequisitos = [];
 	$scope.disciplina = {};
-	$scope.statusDasEntidades = 'ATIVO';
+	$scope.statusDasEntidades = '-';
 
 	/*Listar disciplinas do banco*/
 	$scope.listarDisciplinas = function() {
-		disciplinaService.listar().then(function sucess(response) {		
-			$rootScope.pageLoading = false;
-			$scope.disciplinas = response.data;	
+		disciplinaService.listar().then(function sucess(response) {	
+		console.log(response);	
+			if(response.data.length > 0 ){
+				$scope.statusDasEntidades = 'ATIVO';
+				$rootScope.pageLoading = false;
+				$scope.disciplinas = response.data;
+			}else{
+				$rootScope.pageLoading = false;
+				Materialize.toast('Não foram encontrados registros!', 5000, 'rounded toasts-warning');
+
+			}	
 		}, function error() {
 			$rootScope.pageLoading = false;
 			Materialize.toast('Não foi possivel carregar as disciplinas, por favor tente novamente!', 5000, 'rounded toasts-warning');
@@ -95,7 +103,7 @@ app.controller('disciplinasController', function($scope, $rootScope, $state, dis
 	$scope.excluirDisciplina = function() {				
 		disciplinaService.excluir($scope.disciplinaSelecionada).then(function sucess(response) {
 			$rootScope.pageLoading = false;
-			Materialize.toast('Disciplina ' + $scope.disciplinaSelecionada.nome + ' foi INATIVADA!', 5000, 'rounded toasts-sucess');
+			Materialize.toast('A disciplina ' + $scope.disciplinaSelecionada.nome + ' foi INATIVADA!', 5000, 'rounded toasts-sucess');
 			$scope.listarDisciplinas();			
 			delete $scope.disciplinaSelecionada;
 			$scope.selecionado = true;
