@@ -6,7 +6,7 @@
 				
 				<div class="row">
 					<div class="col">
-						<a data-target="modalNovaInstituicao" ng-click="prepararCadastroDeinstituicao()" class="s1 btn-floating btn-small waves-effect waves-light green tooltipped" data-position="bottom" data-delay="50" data-tooltip="Nova Instituicao"><i class="material-icons">add</i></a>
+						<a data-target="modalNovaInstituicao" class="s1 btn-floating btn-small waves-effect waves-light green tooltipped" data-position="bottom" data-delay="50" data-tooltip="Nova Instituicao"><i class="material-icons">add</i></a>
 					</div>    
 					<div class="col">                    
 						<a data-target="modalVisualizacaoInstituicao" ng-disabled="selecionado" class="s1 btn-floating btn-small waves-effect waves-light yellow tooltipped" data-position="bottom" data-delay="50" data-tooltip="Detalhes da Instituicao"><i class="material-icons">search</i></a>
@@ -53,11 +53,14 @@
 				<h5 class="brand-logo center">Nova Instituição</h5> 
 			</nav>
 			<div class="row">
-				<div class="row">    
-					{{instituicao}}           
-					<div class="input-field col s12">
+				<div class="row">    							
+					<div class="input-field col s6">
 						<input id="nome" type="text" class="validate" ng-model="instituicao.nome" required></input>
 						<label for="nome">Nome da Instituição</label>
+					</div>
+					<div class="input-field col s6">
+						<input id="sigla" type="text" class="validate" ng-model="instituicao.sigla" required></input>
+						<label for="sigla">Sigla da Instituição</label>
 					</div>
 					<div class="input-field col s6">
 						<input id="logradouro" type="text" class="validate" ng-model="instituicao.endereco.logradouro" required></input>
@@ -68,34 +71,43 @@
 						<label for="bairro">Bairro</label>
 					</div>
 					<div class="input-field col s6">
-						<input id="complemento" type="text" class="validate" ng-model="instituicao.endereco.complemento"></input> 
+						<input id="complemento" type="text" class="validate" ng-model="instituicao.endereco.complemento" required></input> 
 						<label for="complemento">Complemento</label>
 					</div>
 					<div class="input-field col s6">
-						<input id="numero" type="text" class="validate" ng-model="instituicao.endereco.numero"></input>
+						<input id="numero" type="text" class="validate" ng-model="instituicao.endereco.numero" required></input>
 						<label for="numero">Numero</label>
 					</div>
-					<div class="input-field col s6">						
-						<select ng-change="listarCidades(estadoSelecionado)" ng-model="instituicao.estado" ng-options="estado.uf group by estado.regiao for estado in estados">										
-						</select>						
-						<label>Estado</label>						
-					</div>						
-					<div class="input-field col s6">						
-						<select ng-model="instituicao.estado">										
-						<option value="teste">teste</option>
-						</select>						
-						<label>Estado</label>						
-					</div>						
 					<div class="input-field col s6">
-						<input id="cep" type="text" class="validate" ng-model="instituicao.endereco.cep"></input> 
+						<input id="cep" type="text" class="validate" ng-model="instituicao.endereco.cep" ng-blur="pesquisaEstadoECidade(instituicao.endereco.cep)" required></input> 
 						<label for="cep">Cep</label>
-					</div>
+					</div>					
+					<div class="input-field col s6">
+						<input id="estado" type="text" ng-model="instituicao.endereco.estado.uf" readonly></input>
+						<label class="active" for="estado">Estado</label>
+					</div>					
+					<div class="input-field col s6">
+						<input id="municipio" type="text" ng-model="instituicao.endereco.cidade.nome" readonly></input> 
+						<label class="active" for="municipio">Municipio</label>
+					</div>					
+					<div class="input-field col s6">
+						<input id="telefoneComercial" type="text" class="validate" ng-model="instituicao.contato.telefoneComercial" required></input> 
+						<label for="telefoneComercial">Telefone Comercial</label>
+					</div>					
+					<div class="input-field col s6">
+						<input id="telefoneCelular" type="text" class="validate" ng-model="instituicao.contato.telefoneCelular"></input> 
+						<label for="telefoneCelular">Telefone Celular</label>
+					</div>					
+					<div class="input-field col s6">
+						<input id="email" type="email" class="validate" ng-model="instituicao.contato.email" required></input> 
+						<label for="email">E-mail</label>
+					</div>										
 				</div>
 			</div>       
 		</div>
 		<div class="modal-footer">
-			<a href="" class="modal-action modal-close waves-effect waves-green btn-flat ">Salvar</a>
-			<a href="" class="modal-action modal-close waves-effect waves-red btn-flat left ">Cancelar</a>
+			<button class="waves-effect waves-green btn-flat" type="submit">Salvar</button>      
+			<button class="modal-action modal-close waves-effect waves-red btn-flat left">Cancelar</button>
 		</div>
 	</form>
 </div>

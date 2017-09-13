@@ -1,4 +1,5 @@
 var app = angular.module('app');
 app.value("configValue", {
-    baseUrl: "http://localhost:8080/iescolaruniversitario/universitario"
+    baseUrl: "http://localhost:8080/iescolaruniversitario/universitario",
+    cepUrl: "https://viacep.com.br/ws/"
 });
