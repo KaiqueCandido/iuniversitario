@@ -13,8 +13,7 @@ app.service('instituicaoService', function($http, $state, $rootScope, configValu
 
 	this.ativar = function(instituicao) {
 		$rootScope.pageLoading = true;
-		instituicao.statusDoCadastro = 'ATIVO';
-		console.log(instituicao);
+		instituicao.statusDoCadastro = 'ATIVO';		
 		return $http.put(configValue.baseUrl + '/instituicao', instituicao);
 	};
 	

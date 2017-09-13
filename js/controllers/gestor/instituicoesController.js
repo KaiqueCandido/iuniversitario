@@ -117,6 +117,20 @@ app.controller('instituicoesController', function($scope, $rootScope, $state, $h
 			Materialize.toast('Não foi possivel excluir a instituição, por favor tente novamente!', 5000, 'rounded toasts-error');
 		});
 	}
+	
+	$scope.ativarInstituicao = function() {							
+		instituicaoService.ativar($scope.instituicaoSelecionada).then(function sucess(response) {
+			$rootScope.pageLoading = false;
+			Materialize.toast('Instituição ' + $scope.instituicaoSelecionada.nome + ' foi ATIVADA!', 5000, 'rounded toasts-sucess');
+			$scope.listarInstituicoes();			
+			delete $scope.instituicaoSelecionada;			
+			$scope.instituicaoSelecionadaInativa = true;
+			$('#modalConfirmacaoAtivacaoDeInstituicao').modal('close');
+		}, function error() {
+			$rootScope.pageLoading = false;
+			Materialize.toast('Não foi possivel ativar a instituição, por favor tente novamente!', 5000, 'rounded toasts-warning');
+		});
+	}
 
 	$scope.alternaStatusDasEntidades = function(){
 		$scope.statusDasEntidades === 'ATIVO' ? $scope.statusDasEntidades = 'INATIVO' : $scope.statusDasEntidades = 'ATIVO';
