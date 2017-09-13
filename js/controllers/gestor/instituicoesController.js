@@ -104,6 +104,27 @@ app.controller('instituicoesController', function($scope, $rootScope, $state, $h
 		});
 	};
 
+	$scope.excluirInstituicao = function() {				
+		instituicaoService.excluir($scope.instituicaoSelecionada).then(function sucess(response) {
+			$rootScope.pageLoading = false;
+			Materialize.toast('A instituição ' + $scope.instituicaoSelecionada.nome + ' foi INATIVADA!', 5000, 'rounded toasts-sucess');
+			$scope.listarInstituicoes();			
+			delete $scope.instituicaoSelecionada;
+			$scope.selecionado = true;
+			$('#modalConfirmacaoExclusaoDeInstituicao').modal('close');
+		}, function error() {
+			$rootScope.pageLoading = false;
+			Materialize.toast('Não foi possivel excluir a instituição, por favor tente novamente!', 5000, 'rounded toasts-error');
+		});
+	}
+
+	$scope.alternaStatusDasEntidades = function(){
+		$scope.statusDasEntidades === 'ATIVO' ? $scope.statusDasEntidades = 'INATIVO' : $scope.statusDasEntidades = 'ATIVO';
+		$scope.selecionado = true;		
+		$scope.instituicaoSelecionadaInativa = true;
+		$scope.limpaSelecoes();
+	}
+
 	$scope.selecionaInstituicao = function(instituicao) {
 		if(instituicao.selecionado === 'grey') {
 			instituicao.selecionado = 'none';
