@@ -39,16 +39,16 @@ app.controller('instituicoesController', function($scope, $rootScope, $state, $h
 			} else {				
 				$rootScope.pageLoading = false;			
 				Materialize.toast('O cep informado não existe na base de dados!', 5000, 'rounded toasts-error');
-				delete $scope.estado;
-				delete $scope.municipio;
-				delete $scope.codigoMunicipio;
+				delete $scope.instituicao.endereco.estado.uf;
+				delete $scope.instituicao.endereco.cidade.nome;
+				delete $scope.instituicao.endereco.cidade.codigoMunicipio;				
 			}			
 		}, function error() {
 			$rootScope.pageLoading = false;
 			Materialize.toast('O cep informado é invalido!', 5000, 'rounded toasts-error');
-			delete $scope.estado;
-			delete $scope.municipio;
-			delete $scope.codigoMunicipio;
+			delete $scope.instituicao.endereco.estado.uf;
+			delete $scope.instituicao.endereco.cidade.nome;
+			delete $scope.instituicao.endereco.cidade.codigoMunicipio;				
 		});		
 	}
 
