@@ -30,3 +30,7 @@ a {
 .selecionado{
 	background-color: grey;
 }
+
+td{
+	border-radius: 0px !important;
+}

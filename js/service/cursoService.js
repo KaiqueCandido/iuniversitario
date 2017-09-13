@@ -8,7 +8,14 @@ app.service('cursoService', function($http, $state, $rootScope, configValue) {
 
 	this.excluir = function(curso) {
 		$rootScope.pageLoading = true;
-		return $http.post(configValue.baseUrl + '/curso', curso);
+		return $http.post(configValue.baseUrl + '/curso/remove', curso);
+	};
+
+	this.ativar = function(curso) {
+		$rootScope.pageLoading = true;
+		curso.statusDoCadastro = 'ATIVO';
+		console.log(curso);
+		return $http.put(configValue.baseUrl + '/curso', curso);
 	};
 	
 	this.atualizar = function(curso) {

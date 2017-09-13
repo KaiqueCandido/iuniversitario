@@ -30,14 +30,18 @@
             <tr>                                        
             <th>Sigla</th>
               <th>Nome</th>
-              <th>Status</th>
+              <th>Períodos</th>
+              <th>Valor da Mensalidade</th>
+              <th><a href="" ng-click="alternaStatusDasEntidades()">Status</a></th> 
             </tr>
           </thead>        
           <tbody>
-            <tr ng-click="selecionaCurso(curso)" ng-repeat="curso in cursos | filter:{nome:criterioDeBusca}">
+            <tr ng-click="selecionaCurso(curso)" ng-repeat="curso in cursos | filter:{nome:criterioDeBusca} | filter:{statusDoCadastro:statusDasEntidades}:true">
               <td ng-style="{'background-color': curso.selecionado}">{{curso.sigla}}</td>
               <td ng-style="{'background-color': curso.selecionado}">{{curso.nome}}</td>
-              <td ng-style="{'background-color': curso.selecionado}">{{curso.status}}</td>
+              <td ng-style="{'background-color': curso.selecionado}">{{curso.periodos.length}}</td>
+              <td ng-style="{'background-color': curso.selecionado}">{{curso.valorMensalidade | currency}}</td>
+              <td ng-style="{'background-color': curso.selecionado}">{{curso.statusDoCadastro}}</td>
             </tr>          
           </tbody>
         </table>                                         
@@ -46,6 +50,40 @@
   </div>    
 </main>
 
+<!-- VISUALIZAR DETALHES DO CURSO -->
+<div id="modalVisualizacaoCurso" class="modal modal-fixed-footer">  
+  <div class="modal-content">
+    <nav class="center">
+      <h5 class="brand-logo center">Detalhes do Curso</h5>            
+    </nav>
+    <div class="row">        
+      <div class="row">               
+        <div class="input-field col s4">          
+          <label for="nome">Nome</label><br/>
+          <p id="nome">{{cursoSelecionado.nome}}</p>
+        </div>                                            
+        <div class="input-field col s4">          
+          <label for="sigla">Sigla</label><br/>
+          <p id="sigla">{{cursoSelecionado.sigla}}</p>
+        </div>                                            
+        <div class="input-field col s4">          
+          <label for="periodos">Número de Períodos</label><br/>
+          <p id="periodos">{{cursoSelecionado.periodos.length}}</p>
+        </div> 
+        <div class="input-field col s4">          
+          <label for="mensalidade">Valor da Mensalidade</label><br/>
+          <p id="mensalidade">{{cursoSelecionado.valorMensalidade | currency}}</p>
+        </div>                                            
+              
+      </div>            
+    </div>       
+  </div>
+  <div class="modal-footer">      
+    <a class="modal-action modal-close waves-effect waves-red btn-flat">Fechar</a>
+  </div>      
+</div>
+
+<!-- CADASTRAR CURSO -->
 <div id="modalNovoCurso" class="modal modal-fixed-footer">
   <form ng-submit="salvarCurso(curso)">  
     <div class="modal-content">
@@ -56,24 +94,90 @@
         <form class="col s12">
           <div class="row">               
             <div class="input-field col s12">
-              <input id="last_name" type="text" class="validate" ng-model="novoCurso.nome"></input>
+              <input id="last_name" type="text" class="validate" ng-model="curso.nome" required></input>
               <label for="last_name">Nome do Curso</label>
             </div>
             <div class="input-field col s6">
-              <input id="last_name" type="text" class="validate" ng-model="novoCurso.sigla"></input>
+              <input id="last_name" type="text" class="validate" ng-model="curso.sigla" required></input>
               <label for="last_name">Sigla do Curso</label>
             </div>
             <div class="input-field col s6">
-              <input id="last_name" type="text" class="validate" ng-model="novoCurso.valorMensalidade"></input> 
+              <input id="last_name" type="text" class="validate" ng-model="curso.valorMensalidade" required></input> 
               <label for="last_name">Valor da Mensalidade</label>
             </div>
           </div>
-        </form>
-      </div>       
+        </div>       
     </div>
     <div class="modal-footer">
-      <a href="" class="modal-action modal-close waves-effect waves-green btn-flat ">Salvar</a>
-      <a href="" class="modal-action modal-close waves-effect waves-red btn-flat left ">Cancelar</a>
+      <button class="waves-effect waves-green btn-flat " type="submit">Salvar</button>
+      <button class="modal-action modal-close waves-effect waves-red btn-flat left ">Cancelar</button>
     </div>
   </form>
+</div>
+
+<!-- EDITAR CURSO -->
+<div id="modalEditarCurso" class="modal modal-fixed-footer">
+  <form>  
+    <div class="modal-content">
+      <nav class="center">
+      <h5 class="brand-logo center">Editar Curso</h5>      
+      </nav>
+      <div class="row">
+        <form class="col s12">
+          <div class="row">               
+            <div class="input-field col s12">
+              <input id="last_name" type="text" class="validate" ng-model="cursoSelecionado.nome" required></input>
+              <label for="last_name" class="active">Nome do Curso</label>
+            </div>
+            <div class="input-field col s6">
+              <input id="last_name" type="text" class="validate" ng-model="cursoSelecionado.sigla" required></input>
+              <label for="last_name" class="active">Sigla do Curso</label>
+            </div>
+            <div class="input-field col s6">
+              <input id="last_name" type="text" class="validate" ng-model="cursoSelecionado.valorMensalidade" required></input> 
+              <label for="last_name" class="active">Valor da Mensalidade</label>
+            </div>
+          </div>
+        </div>       
+    </div>
+    <div class="modal-footer">
+      <button class="waves-effect waves-green btn-flat " data-target="modalConfirmacaoAtualizacaoDeCurso">Atualizar</button>
+      <button class="modal-action modal-close waves-effect waves-red btn-flat left ">Cancelar</button>
+    </div>
+  </form>
+</div>
+
+<div id="modalConfirmacaoAtualizacaoDeCurso" class="modal bottom-sheet">
+  <div class="modal-content modal-confirmacao">
+    <h5>Confirmar operação</h5>
+    <p>Deseja realmente editar esse curso?!</p>
+  </div>
+  <div class="modal-footer">
+    <button ng-click="editarCurso(cursoSelecionado)" class="waves-effect waves-green btn-flat">Confirmar</button>      
+    <button class="modal-action modal-close waves-effect waves-red btn-flat left">Cancelar</button>
+  </div>
+</div>
+
+<!-- EXCLUIR CURSO -->
+<div id="modalConfirmacaoExclusaoDeCurso" class="modal bottom-sheet">
+  <div class="modal-content modal-confirmacao">
+    <h5>Confirmar operação</h5>
+    <p>Deseja realmente excluir esse curso? Caso exclua o mesmo será inativado!</p>
+  </div>
+  <div class="modal-footer">
+    <button ng-click="excluirCurso()" class="waves-effect waves-green btn-flat">Confirmar</button>      
+    <button class="modal-action modal-close waves-effect waves-red btn-flat left">Cancelar</button>
+  </div>
+</div>
+
+<!-- ATIVAR CURSO -->
+<div id="modalConfirmacaoAtivacaoDeCurso" class="modal bottom-sheet">
+  <div class="modal-content modal-confirmacao">
+    <h5>Confirmar operação</h5>
+    <p>Deseja realmente ativar esse curso?</p>
+  </div>
+  <div class="modal-footer">
+    <button ng-click="ativarCurso()" class="waves-effect waves-green btn-flat">Confirmar</button>      
+    <button class="modal-action modal-close waves-effect waves-red btn-flat left">Cancelar</button>
+  </div>
 </div>
