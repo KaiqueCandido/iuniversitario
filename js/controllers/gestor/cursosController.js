@@ -116,6 +116,6 @@ app.controller('cursosController', function($scope, $rootScope, $state, $http, c
 
 	
 	$scope.listarCursos();
-	initialiJquery();
+	iniciarJquery();	
 
 });

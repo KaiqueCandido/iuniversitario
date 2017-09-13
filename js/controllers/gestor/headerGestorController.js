@@ -57,4 +57,6 @@ app.controller('headerGestorController', function($scope, $state){
 		$state.go("login");
 	};	
 
+	iniciarJquery();
+
 })

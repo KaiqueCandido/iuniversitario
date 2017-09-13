@@ -184,6 +184,6 @@ app.controller('disciplinasController', function($scope, $rootScope, $state, dis
 	};			
 
 	$scope.listarDisciplinas();
-	initialiJquery();
+	iniciarJquery();	
 
 });

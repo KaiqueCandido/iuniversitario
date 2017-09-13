@@ -92,5 +92,6 @@ app.controller('instituicoesController', function($scope, $rootScope, $state, $h
 	};				
 
 	$scope.listarInstituicoes();	
+	iniciarJquery();
 
 });

@@ -19,7 +19,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
             'footer':{
                 templateUrl: 'pages/footer.html' 
             }
-        }    
+        },        
     })      
 
     .state("gestorGerenciarInstituicoes", {

@@ -27,6 +27,6 @@ app.controller('vestibularController', function($scope, $rootScope, $state, $htt
 	{ano:'2017', semestre:1, status:'Cancelado'}
 	];
 
-	initialiJquery();
+	iniciarJquery();
 
 });

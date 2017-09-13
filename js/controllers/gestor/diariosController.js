@@ -28,6 +28,6 @@ app.controller('diariosController', function($scope, $rootScope, $state, $http, 
 	{serie:'Serie', turma:'Turma', turno:'Turno', disciplina:'Disciplina', cargaHoraria:'CargaHoraria', professor:'Professor', status:'Ativo'}
 	]	
 	
-	initialiJquery();
+	iniciarJquery();	
 
 });

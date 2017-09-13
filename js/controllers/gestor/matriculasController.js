@@ -29,6 +29,6 @@ app.controller('matriculasController', function($scope, $rootScope, $state, $htt
 	{codMatricula:'20122201.10339', ano:'2017', status:'Ativo'}
 	]	
 	
-	initialiJquery();
+	iniciarJquery();
 
 });

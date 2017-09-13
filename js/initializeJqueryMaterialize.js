@@ -1,4 +1,4 @@
-$(document).ready(function() {	
+function iniciarJquery(){
 	$(".button-collapse").sideNav();
 	$('.collapsible').collapsible();	    
 	$('.modal').modal();
@@ -23,4 +23,4 @@ $(document).ready(function() {
 		selectYears: 100,
 		closeOnSelect: true
 	});
-});
+}

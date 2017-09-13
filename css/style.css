@@ -15,6 +15,11 @@ nav {
 a {
 	color: #2086a3 !important;
 }
+
+.btn-menu-white {
+	color: #fff !important;
+}
+
 .print {
 	color: black !important;
 }
