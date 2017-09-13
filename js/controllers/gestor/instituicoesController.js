@@ -41,9 +41,11 @@ app.controller('instituicoesController', function($scope, $rootScope, $state, $h
 		});
 	};
 
-	$scope.listarCidades = function() {
-
-		console.log('estado');
+	$scope.teste = function($scope) {
+		$scope.listarCidades = function(estadoSelecionado){
+			console.log('estado -> ' + estadoSelecionado);
+			
+		}
 		
 	}
 

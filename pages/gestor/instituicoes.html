@@ -53,7 +53,8 @@
 				<h5 class="brand-logo center">Nova Instituição</h5> 
 			</nav>
 			<div class="row">
-				<div class="row">               
+				<div class="row">    
+					{{instituicao}}           
 					<div class="input-field col s12">
 						<input id="nome" type="text" class="validate" ng-model="instituicao.nome" required></input>
 						<label for="nome">Nome da Instituição</label>
@@ -71,33 +72,20 @@
 						<label for="complemento">Complemento</label>
 					</div>
 					<div class="input-field col s6">
-						<input id="numero" type="text" class="validate" ng-model="instituicao.endereco.numero"></input> 
+						<input id="numero" type="text" class="validate" ng-model="instituicao.endereco.numero"></input>
 						<label for="numero">Numero</label>
 					</div>
 					<div class="input-field col s6">						
-						<select ng-model="estadoSelecionado" ng-change="listarCidades()">
-							<option value="" selected disabled>Selecione um estado</option>
-							<optgroup label="Nordeste">
-								<option ng-repeat="estado in estados | filter:{regiao:'Nordeste'}" value="{{estado}}">{{estado.uf}}</option>
-							</optgroup>
-							<optgroup label="Norte">
-								<option ng-repeat="estado in estados | filter:{regiao:'Norte'}" value="{{estado}}">{{estado.uf}}</option>
-							</optgroup>
-							<optgroup label="Centro-Oeste">
-								<option ng-repeat="estado in estados | filter:{regiao:'Centro-Oeste'}" value="{{estado}}">{{estado.uf}}</option>
-							</optgroup>
-							<optgroup label="Sudeste">
-								<option ng-repeat="estado in estados | filter:{regiao:'Sudeste'}" value="{{estado}}">{{estado.uf}}</option>
-							</optgroup>
-							<optgroup label="Sul">
-								<option ng-repeat="estado in estados | filter:{regiao:'Sul'}" value="{{estado}}">{{estado.uf}}</option>
-							</optgroup>
+						<select ng-change="listarCidades(estadoSelecionado)" ng-model="instituicao.estado" ng-options="estado.uf group by estado.regiao for estado in estados">										
 						</select>						
 						<label>Estado</label>						
-					</div>	
-					aa
-					{{estadoSelecionado}}	
-					aa
+					</div>						
+					<div class="input-field col s6">						
+						<select ng-model="instituicao.estado">										
+						<option value="teste">teste</option>
+						</select>						
+						<label>Estado</label>						
+					</div>						
 					<div class="input-field col s6">
 						<input id="cep" type="text" class="validate" ng-model="instituicao.endereco.cep"></input> 
 						<label for="cep">Cep</label>
