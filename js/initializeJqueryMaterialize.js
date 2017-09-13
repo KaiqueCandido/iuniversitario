@@ -1,15 +1,10 @@
-function initialiJquery() {	
+$(document).ready(function() {	
 	$(".button-collapse").sideNav();
 	$('.collapsible').collapsible();	    
 	$('.modal').modal();
-	$('.tooltipped').tooltip({delay: 50});	
-	$('select').material_select();
+	$('.tooltipped').tooltip({delay: 50});		
 	$('ul.tabs').tabs();
-	$('input, textarea').characterCounter();  
-	initDatePicker();
-}
-
-function initDatePicker(){
+	$('input, textarea').characterCounter();
 	$('.datepicker').pickadate({
 		monthsFull: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
 		monthsShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
@@ -28,4 +23,4 @@ function initDatePicker(){
 		selectYears: 100,
 		closeOnSelect: true
 	});
-}
+});
