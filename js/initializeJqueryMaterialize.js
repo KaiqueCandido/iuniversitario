@@ -23,4 +23,8 @@ function iniciarJquery(){
 		selectYears: 100,
 		closeOnSelect: true
 	});
+	
+	setTimeout(function (){
+	$('select').material_select();
+	}, 500);
 }
