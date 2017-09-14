@@ -30,6 +30,6 @@ app.controller('alunosController', function ($scope, $rootScope, $state) {
 	{nome:'Kaique Candido', email:'kaique@email.com', status:'Ativo'}
 	]
 	
-	iniciarJquery();	
+	iniciarJquery();
 
 });
