@@ -24,6 +24,7 @@ function iniciarJquery(){
 		closeOnSelect: true
 	});
 	
+	
 	setTimeout(function (){
 	$('select').material_select();
 	}, 500);

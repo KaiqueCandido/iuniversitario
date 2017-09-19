@@ -26,6 +26,7 @@
                     <thead>
                       <tr>                                        
                           <th>Nome</th>
+                          <th>Sobrenome</th>
                           <th>E-mail</th>
                           <th>Status</th>
                       </tr>
@@ -33,8 +34,9 @@
                   <tbody>
                       <tr ng-click="selecionaAluno(aluno)" ng-repeat="aluno in alunos | filter:{nome:criterioDeBusca}">
                         <td ng-style="{'background-color': aluno.selecionado}">{{aluno.nome}}</td>
+                        <td ng-style="{'background-color': aluno.selecionado}">{{aluno.sobrenome}}</td>
                         <td ng-style="{'background-color': aluno.selecionado}">{{aluno.email}}</td>
-                        <td ng-style="{'background-color': aluno.selecionado}">{{aluno.status}}</td>
+                        <td ng-style="{'background-color': aluno.selecionado}">{{aluno.statusDoCadastro}}</td>
                     </tr>          
                 </tbody>
             </table>
@@ -55,57 +57,64 @@
                 <!-- DADOS GERAIS -->          
                 <div class="input-field col s6">
                     <input id="nome" type="text" class="validate" ng-model="aluno.nome"></input>
-                    <label for="nome">Nome</label>
+                    <label for="nome" required>Nome</label>
                 </div>                              
                 <div class="input-field col s6">
                     <input id="sobreNome" type="text" class="validate" ng-model="aluno.sobreNome"></input>
-                    <label for="sobreNome">Sobrenome</label>
+                    <label for="sobreNome" required>Sobrenome</label>
                 </div>                                                              
                 <div class="input-field col s6">
-                    <input id="dataDeNascimento" type="text" class="datepicker" ng-model="aluno.dataDeNascimento"></input>
+                    <input id="dataDeNascimento" type="text" ng-model="aluno.dataDeNascimento" ui-date></input>
                     <label for="dataDeNascimento">Data de nascimento</label>
                 </div>                              
+                   {{aluno}}
                 <div class="input-field col s6">
-                    <select id="sexo" ng-model="aluno.sexo" class="validate">
+                    <select id="sexo" ng-model="aluno.sexo" class="validate" required>
                         <option value="" disabled="" selected="">Selecione um sexo</option>
                         <option value="MASCULINO">Masculino</option>
                         <option value="FEMININO">Feminino</option>                                  
                     </select>
                     <label for="sexo">Sexo</label>                                        
-                </div>                              
+                </div>  
+
+
                 <div class="input-field col s6">
-                    <select id="etnia" ng-model="aluno.raca" ng-options="raca.nome for raca in racas">
+                    <select id="etnia" ng-model="aluno.raca" class=" validate" >
                         <option value="" disabled="" selected="">Selecione uma etnia</option>
+                        <option ng-repeat="raca in racas" value="{{raca.value}}">{{raca.nome}}</option>
                     </select>
                     <label for="etnia">Etnia</label>                                        
                 </div>  
+
                 <div class="input-field col s6">
-                    <select id="estadoCivil" ng-model="aluno.estadoCivil" ng-options="estadoCivil.nome for estadoCivil in estadoCivis">
+                    <select id="estadoCivil" ng-model="aluno.estadoCivil" class="validate" >
                         <option value="" disabled="" selected="">Selecione um estado civil</option>
+                        <option ng-repeat="estadoCivil in estadosCivis" value="{{estadoCivil.value}}">{{estadoCivil.nome}}</option>
                     </select>
                     <label for="estadoCivil">Estado civil</label>                                        
                 </div>                              
                 <div class="input-field col s6">
-                    <input id="naturalidade" type="text" class="validate" ng-model="aluno.naturalidade"></input>
+                    <input id="naturalidade" type="text" class="validate" ng-model="aluno.naturalidade" required></input>
                     <label for="naturalidade">Naturalidade</label>
                 </div> 
                 <div class="input-field col s6">
-                    <input id="nacionalidade" type="text" class="validate" ng-model="aluno.nacionalidade"></input>
+                    <input id="nacionalidade" type="text" class="validate" ng-model="aluno.nacionalidade" required></input>
                     <label for="nacionalidade">Nacionalidade</label>
                 </div>
                 <div class="input-field col s6">
-                <select ng-model="aluno.tipoSanguineo" ng-options="tipoSanguineo.nome for tipoSanguineo in tiposSanguineos">
+                    <select id="tipoSanguineo" ng-model="aluno.tipoSanguineo">
                         <option value="" disabled="" selected="">Selecione um tipo sanguíneo</option>
+                        <option ng-repeat="tipoSanguineo in tiposSanguineos" value="{{tipoSanguineo.value}}">{{tipoSanguineo.nome}}</option>
                     </select>
                     <label>Tipo Sanguíneo</label>
                 </div>  
                 
                 <div class="input-field col s6">
-                    <input id="nomeDoPai" type="text" class="validate" ng-model="aluno.nomeDoPai"></input>
+                    <input id="nomeDoPai" type="text" class="validate" ng-model="aluno.nomeDoPai" required></input>
                     <label for="nomeDoPai">Nome do Pai</label>
                 </div> 
                 <div class="input-field col s6">
-                    <input id="nomeDaMae" type="text" class="validate" ng-model="aluno.nomeDaMae"></input>
+                    <input id="nomeDaMae" type="text" class="validate" ng-model="aluno.nomeDaMae" required></input>
                     <label for="nomeDaMae">Nome da Mãe</label>
                 </div> 
                 <div class="input-field col s6">
@@ -119,39 +128,39 @@
 
                 <!-- DOCUMENTOS -->  
                 <div class="input-field col s4">
-                    <input id="rg" type="text" class="validate" ng-model="aluno.documentosPessoais.rg"></input>
+                    <input id="rg" type="text" class="validate" ng-model="aluno.documentosPessoais.rg" required></input>
                     <label for="rg">RG</label>
                 </div>  
                 <div class="input-field col s4">
-                    <input id="orgaoEmissorDoRg" type="text" class="validate" ng-model="aluno.documentosPessoais.orgaoEmissorDoRg"></input>
+                    <input id="orgaoEmissorDoRg" type="text" class="validate" ng-model="aluno.documentosPessoais.orgaoEmissorDoRg" required></input>
                     <label for="orgaoEmissorDoRg">Orgão Emissor</label>
                 </div>  
                 <div class="input-field col s4">
-                    <select ng-model="aluno.documentosPessoais.estadoDeEmissaoDoRg">
+                    <select ng-model="aluno.documentosPessoais.estadoDeEmissaoDoRg" >
                         <option value="" disabled="" selected="">Selecione um estado</option>
-                     </select>
+                    </select>
                     <label>Estado de Emissão</label>                                        
                 </div>  
                 <div class="input-field col s6">
-                    <input id="dataDeEmissaoDoRg" type="text" class="validate" ng-model="aluno.documentosPessoais.dataDeEmissaoDoRg"></input>
+                    <input id="dataDeEmissaoDoRg" type="text"  ng-model="aluno.documentosPessoais.dataDeEmissaoDoRg" ui-date></input>
                     <label for="dataDeEmissaoDoRg">Data de Emissão</label>
                 </div> 
                 <div class="input-field col s6">
-                    <input id="cpf" type="text" class="validate" ng-model="aluno.documentosPessoais.cpf"></input>
+                    <input id="cpf" type="text" class="validate" ng-model="aluno.documentosPessoais.cpf" required></input>
                     <label for="cpf">CPF</label>
                 </div>
                 <div class="input-field col s6">
-                    <input id="registroDeNascimento" type="text" class="validate" ng-model="aluno.documentosPessoais.registroDeNascimento"></input>
+                    <input id="registroDeNascimento" type="text" class="validate" ng-model="aluno.documentosPessoais.registroDeNascimento" required></input>
                     <label for="registroDeNascimento">Registro de Nascimento</label>
                 </div>
                 <div class="input-field col s6">
-                    <input id="resevista" type="text" ng-model="aluno.documentosPessoais.resevista"></input>
+                    <input id="resevista" type="text" ng-model="aluno.documentosPessoais.resevista" ></input>
                     <label for="resevista">Reservista</label>
                 </div>
 
                 <!-- CONTATO -->
                 <div class="input-field col s6">
-                    <input id="email" type="email" ng-model="aluno.contato.email"></input>
+                    <input id="email" type="email" class="validate" ng-model="aluno.contato.email" required></input>
                     <label>Email Pessoal</label>                                       
                 </div>
                 <div class="input-field col s6">
@@ -162,6 +171,13 @@
                     <input id="telefoneResidencial" type="text" ng-model="aluno.contato.telefoneResidencial"></input>
                     <label>Telefone Residencial</label>                                       
                 </div>
+                <!--DADOS DA CONTA-->
+                <div class="input-field col s6">
+                    <input id="telefoneResidencial" type="text" ng-model="aluno.contato.telefoneResidencial"></input>
+                    <label>Telefone Residencial</label>                                       
+                </div>
+
+
 
                 <!-- ENDEREÇO -->
                 <!--<div class="input-field col s6">
@@ -204,7 +220,7 @@
         </div>       
     </div>
     <div class="modal-footer">
-        <a ng-click="salvarAluno(aluno)" class="modal-action modal-close waves-effect waves-green btn-flat ">Salvar</a>
+        <a ng-click="preparaSalvamentoAluno(aluno)" class="modal-action modal-close waves-effect waves-green btn-flat ">Salvar</a>
         <a class="modal-action modal-close waves-effect waves-red btn-flat left ">Cancelar</a>
     </div>
 </div>

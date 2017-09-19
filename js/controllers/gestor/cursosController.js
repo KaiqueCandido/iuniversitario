@@ -27,7 +27,6 @@ app.controller('cursosController', function($scope, $rootScope, $state, $http, c
 	/* Author Priscila Gouveia*/
 	
 	$scope.salvarCurso = function (curso) {
-		console.log(curso);
 		cursoService.salvar(curso).then(function sucess(response){
 			$rootScope.pageLoading = false;
 			Materialize.toast('O curso '+ curso.nome +' foi adicionado com sucesso!', 5000, 'rounded toasts-sucess');
