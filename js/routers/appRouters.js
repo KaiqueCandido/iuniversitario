@@ -15,6 +15,17 @@ app.config(function($stateProvider, $urlRouterProvider) {
                     controller: 'loginController'
                 }
             }            
+        })
+
+        .state('loginDesenvolvedor', {
+            cache: false,
+            url: '/loginDesenvolvedor',
+            views : {
+                'content':{
+                    templateUrl: 'pages/desenvolvedor/login.html',
+                    controller: 'loginDesenvolvedorController'
+                }
+            }            
         })                
 
         .state('notFound', {

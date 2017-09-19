@@ -52,6 +52,29 @@ app.controller('instituicoesController', function($scope, $rootScope, $state, $h
 		});		
 	}
 
+	$scope.pesquisaEstadoECidadeEdicaoDeInstituicao = function (cep) {
+		cepService.buscarEstadoECidade(cep).then(function sucess(response) {
+			if(typeof response.data.erro === 'undefined') {
+				$rootScope.pageLoading = false;			
+				$scope.instituicaoSelecionada.endereco.estado.uf = response.data.uf; 
+				$scope.instituicaoSelecionada.endereco.cidade.nome = response.data.localidade; 
+				$scope.instituicaoSelecionada.endereco.cidade.codigoMunicipio = response.data.ibge; 				
+			} else {				
+				$rootScope.pageLoading = false;			
+				Materialize.toast('O cep informado não existe na base de dados!', 5000, 'rounded toasts-error');
+				delete $scope.instituicaoSelecionada.endereco.estado.uf;
+				delete $scope.instituicaoSelecionada.endereco.cidade.nome;
+				delete $scope.instituicaoSelecionada.endereco.cidade.codigoMunicipio;				
+			}			
+		}, function error() {
+			$rootScope.pageLoading = false;
+			Materialize.toast('O cep informado é invalido!', 5000, 'rounded toasts-error');
+			delete $scope.instituicaoSelecionada.endereco.estado.uf;
+			delete $scope.instituicaoSelecionada.endereco.cidade.nome;
+			delete $scope.instituicaoSelecionada.endereco.cidade.codigoMunicipio;				
+		});		
+	}
+
 	/*Salvar Instituicao*/
 	$scope.salvarInstituicao = function(instituicao) {		
 		instituicaoService.salvar(instituicao).then(function sucess(response) {
@@ -64,6 +87,57 @@ app.controller('instituicoesController', function($scope, $rootScope, $state, $h
 			Materialize.toast('Não foi possivel cadastrar a instituição, por favor tente novamente!', 5000, 'rounded toasts-error');		
 		});
 	};
+
+	/*Editar Instituicao*/
+	$scope.editarInstituicao = function(instituicaoSelecionada) {		
+		instituicaoService.atualizar(instituicaoSelecionada).then(function sucess(response) {
+			$rootScope.pageLoading = false;
+			Materialize.toast('A instituicao ' + instituicaoSelecionada.nome + ' foi atualizada com sucesso!', 5000, 'rounded toasts-sucess');
+			$scope.listarInstituicoes();
+			delete $scope.instituicaoSelecionada;
+			$('#modalConfirmacaoAtualizacaoDeInstituicao').modal('close');
+			$('#modalEditarInstituicao').modal('close');
+		}, function error() {
+			$rootScope.pageLoading = false;
+			Materialize.toast('Não foi possivel atualizar a instituição, por favor tente novamente!', 5000, 'rounded toasts-error');
+			$('#modalConfirmacaoAtualizacaoDeInstituicao').modal('close');
+		});
+	};
+
+	$scope.excluirInstituicao = function() {				
+		instituicaoService.excluir($scope.instituicaoSelecionada).then(function sucess(response) {
+			$rootScope.pageLoading = false;
+			Materialize.toast('A instituição ' + $scope.instituicaoSelecionada.nome + ' foi INATIVADA!', 5000, 'rounded toasts-sucess');
+			$scope.listarInstituicoes();			
+			delete $scope.instituicaoSelecionada;
+			$scope.selecionado = true;
+			$('#modalConfirmacaoExclusaoDeInstituicao').modal('close');
+		}, function error() {
+			$rootScope.pageLoading = false;
+			Materialize.toast('Não foi possivel excluir a instituição, por favor tente novamente!', 5000, 'rounded toasts-error');
+		});
+	}
+	
+	$scope.ativarInstituicao = function() {							
+		instituicaoService.ativar($scope.instituicaoSelecionada).then(function sucess(response) {
+			$rootScope.pageLoading = false;
+			Materialize.toast('Instituição ' + $scope.instituicaoSelecionada.nome + ' foi ATIVADA!', 5000, 'rounded toasts-sucess');
+			$scope.listarInstituicoes();			
+			delete $scope.instituicaoSelecionada;			
+			$scope.instituicaoSelecionadaInativa = true;
+			$('#modalConfirmacaoAtivacaoDeInstituicao').modal('close');
+		}, function error() {
+			$rootScope.pageLoading = false;
+			Materialize.toast('Não foi possivel ativar a instituição, por favor tente novamente!', 5000, 'rounded toasts-warning');
+		});
+	}
+
+	$scope.alternaStatusDasEntidades = function(){
+		$scope.statusDasEntidades === 'ATIVO' ? $scope.statusDasEntidades = 'INATIVO' : $scope.statusDasEntidades = 'ATIVO';
+		$scope.selecionado = true;		
+		$scope.instituicaoSelecionadaInativa = true;
+		$scope.limpaSelecoes();
+	}
 
 	$scope.selecionaInstituicao = function(instituicao) {
 		if(instituicao.selecionado === 'grey') {

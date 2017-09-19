@@ -21,8 +21,12 @@ app.controller('loginController', function($scope, $state, $http, loginService){
   });*/
  };  	
 
- $scope.goToAluno = function () {  	
+ $scope.goToAluno = function () {   
    $state.go('homeAluno');
+ };
+
+ $scope.goAreRestrita = function () {  	
+   $state.go('loginDesenvolvedor');
  };
 
  $scope.goToProfessor = function () {  	

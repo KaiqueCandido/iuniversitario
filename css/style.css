@@ -16,8 +16,12 @@ a {
 	color: #2086a3 !important;
 }
 
-.btn-menu-white {
+.a-white {
 	color: #fff !important;
+}
+
+.a-grey {
+	color: grey !important;
 }
 
 .print {

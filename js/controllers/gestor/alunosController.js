@@ -99,4 +99,7 @@ function testeSelect(campo, nome) {
 		return valorSelecionado;
 	};
 
+	iniciarJquery();
+
+
 };

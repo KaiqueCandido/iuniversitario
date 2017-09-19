@@ -13,8 +13,7 @@ app.service('cursoService', function($http, $state, $rootScope, configValue) {
 
 	this.ativar = function(curso) {
 		$rootScope.pageLoading = true;
-		curso.statusDoCadastro = 'ATIVO';
-		console.log(curso);
+		curso.statusDoCadastro = 'ATIVO';		
 		return $http.put(configValue.baseUrl + '/curso', curso);
 	};
 	

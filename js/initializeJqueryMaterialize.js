@@ -1,5 +1,5 @@
 function iniciarJquery(){
-	$(".button-collapse").sideNav();
+	$(".button-collapse").sideNav({'closeOnClick': true});
 	$('.collapsible').collapsible();	    
 	$('.modal').modal();
 	$('.tooltipped').tooltip({delay: 50});		
