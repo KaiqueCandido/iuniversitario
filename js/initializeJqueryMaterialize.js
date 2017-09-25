@@ -1,5 +1,5 @@
 function iniciarJquery(){
-	$(".button-collapse").sideNav({'closeOnClick': true});
+	window.innerWidth <= 992 ? $(".button-collapse").sideNav({'closeOnClick': true}) : $(".button-collapse").sideNav();
 	$('.collapsible').collapsible();	    
 	$('.modal').modal();
 	$('.tooltipped').tooltip({delay: 50});		
@@ -23,9 +23,11 @@ function iniciarJquery(){
 		selectYears: 100,
 		closeOnSelect: true
 	});
-	
-	
 	setTimeout(function (){
-	$('select').material_select();
+		$('select').material_select();
 	}, 500);
 }
+
+window.addEventListener('resize', function(){
+	iniciarJquery();
+});

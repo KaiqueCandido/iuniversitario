@@ -1,5 +1,5 @@
 html, body {
-	height:75%;
+	height:80%;
 	padding-bottom: 100 !important;
 }
 main {
@@ -42,4 +42,12 @@ a {
 
 td{
 	border-radius: 0px !important;
+}
+
+.tabs .indicator {
+    background-color: #4db6ac;
+}
+
+.subsecao{
+	color: #4db6ac;
 }

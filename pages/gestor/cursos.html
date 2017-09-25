@@ -39,8 +39,8 @@
             <tr ng-click="selecionaCurso(curso)" ng-repeat="curso in cursos | filter:{nome:criterioDeBusca} | filter:{statusDoCadastro:statusDasEntidades}:true">
               <td ng-style="{'background-color': curso.selecionado}">{{curso.sigla}}</td>
               <td ng-style="{'background-color': curso.selecionado}">{{curso.nome}}</td>
-              <td ng-style="{'background-color': curso.selecionado}">{{curso.periodos.length}}</td>
-              <td ng-style="{'background-color': curso.selecionado}">{{curso.valorMensalidade | currency}}</td>
+              <td ng-style="{'background-color': curso.selecionado}">{{curso.periodos.length == 0 ? '-': curso.periodos.length}}</td>
+              <td ng-style="{'background-color': curso.selecionado}">{{curso.valorMensalidade.length == 0 ? '-': (curso.valorMensalidade | currency)}}</td>
               <td ng-style="{'background-color': curso.selecionado}">{{curso.statusDoCadastro}}</td>
             </tr>          
           </tbody>
