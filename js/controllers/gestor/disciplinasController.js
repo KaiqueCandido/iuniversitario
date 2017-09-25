@@ -3,10 +3,10 @@ app.controller('disciplinasController', function($scope, $rootScope, $state, dis
 	$scope.selecionado = true;
 	$scope.disciplinaSelecionadaInativa = true;
 	$scope.disciplinaSelecionada = {};
-	$scope.disciplinas = [{abreviacao: '-', nome: '-', cargaHoraria: '-', statusDoCadastro: '-'}];
+	$scope.disciplinas = [];
 	$scope.disciplinasPreRequisitos = [];
 	$scope.disciplina = {};
-	$scope.statusDasEntidades = '-';
+	$scope.statusDasEntidades = 'ATIVO';
 
 	/*Listar disciplinas do banco*/
 	$scope.listarDisciplinas = function() {

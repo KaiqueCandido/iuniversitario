@@ -3,9 +3,9 @@ app.controller('cursosController', function($scope, $rootScope, $state, $http, c
 	$scope.selecionado = true;
 	$scope.cursoSelecionado = {};	
 	$scope.cursoSelecionadoInativo = true;	
-	$scope.cursos = [{sigla:'-', nome:'-', periodos: '', valorMensalidade: '',  statusDoCadastro:'-'}];	
+	$scope.cursos = [];	
 	$scope.curso = {};
-	$scope.statusDasEntidades = '-';
+	$scope.statusDasEntidades = 'ATIVO';
 
 	/*Listar cursos do banco*/
 	$scope.listarCursos = function() {

@@ -3,10 +3,10 @@ app.controller('instituicoesController', function($scope, $rootScope, $state, $h
 	$scope.selecionado = true;
 	$scope.instituicaoSelecionadaInativa = true;
 	$scope.instituicaoSelecionada = {};
-	$scope.instituicoes = [{sigla:'-', nome:'-', statusDoCadastro:'-'}];	
+	$scope.instituicoes = [];	
 	$scope.estados = [];	
 	$scope.estadoSelecionado = {};		
-	$scope.statusDasEntidades = '-';
+	$scope.statusDasEntidades = 'ATIVO';
 	$scope.instituicao = {};
 	$scope.instituicao.endereco = {};
 	$scope.instituicao.endereco.estado = {};

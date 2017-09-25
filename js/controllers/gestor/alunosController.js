@@ -3,21 +3,21 @@ app.controller('alunosController', function ($scope, $document, $rootScope, $sta
 	$scope.selecionado = true;
 	$scope.alunoSelecionado = {};
 	$scope.alunoSelecionadoInativo = true;
-	$scope.alunos = [{nome:'-', sobreNome:'-', cpf: '-', email: '-', statusDoCadastro:'-'}];	
+	$scope.alunos = [];	
 	$scope.aluno = {};
 	//$scope.aluno.conta.matricula = {};
 	$scope.aluno.conta = {};
 	$scope.aluno.conta.login = {};
 	$scope.estados = [];	
 	$scope.estadoSelecionado = {};		
-	$scope.statusDasEntidades = '-';
+	
 	$scope.aluno.endereco = {};
 	$scope.aluno.endereco.estado = {};
 	$scope.aluno.endereco.cidade = {};
 	$scope.estadosCivis = enumService.getEstadosCivis();
 	$scope.racas = enumService.getRacas();
 	$scope.tiposSanguineos = enumService.getTiposSanguineos();
-	$scope.statusDasEntidades = '-';
+	$scope.statusDasEntidades = 'ATIVO';
 	
 	$scope.listarAlunos = function () {
 		alunoService.listar().then(function sucess (response) {

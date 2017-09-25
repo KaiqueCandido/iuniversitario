@@ -35,7 +35,7 @@
                         </tr>
                     </thead>        
                     <tbody>
-                        <tr ng-click="selecionaAluno(aluno)" ng-repeat="aluno in alunos| filter:{nome:criterioDeBusca} | filter:{statusDoCadastro:statusDasEntidades}:true">
+                        <tr ng-click="selecionaAluno(aluno)" ng-repeat="aluno in alunos| filter:{nome:criterioDeBusca} | filter:{statusDoCadastro:statusDasEntidades}:true" ng-hide="aluno === null">
                             <td ng-style="{'background-color': aluno.selecionado}">{{aluno.nome + ' ' + aluno.sobreNome}}</td> 
                             <td ng-style="{'background-color': aluno.selecionado}">{{aluno.documentosPessoais.cpf}}</td>
                             <td ng-style="{'background-color': aluno.selecionado}">{{aluno.contato.email}}</td>

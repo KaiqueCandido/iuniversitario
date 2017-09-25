@@ -51,3 +51,8 @@ td{
 .subsecao{
 	color: #4db6ac;
 }
+
+/*Mantém a tabela vazia no formato certo*/
+table.responsive-table{
+	display: inline-table;
+}
